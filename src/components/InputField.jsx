@@ -34,12 +34,12 @@ const useStyles = makeStyles(theme =>createStyles({
   }
 }))
 
-const InputField = ({ type, label, name, value, onChange, placeholder, fullWidth }) => {
+const InputField = ({ type, label, name, value, onChange, onFocus, placeholder, fullWidth }) => {
   const classes = useStyles()
 
   return (
     <div className={classes.formControl}>
-        <TextField fullWidth={fullWidth} type={type} label={label} name={name} value={value} onChange={onChange} placeholder={placeholder} size='small' classes={{ root: classes.root }} />
+        <TextField fullWidth={fullWidth} type={type} label={label} name={name} value={value} onChange={onChange} onFocus={onFocus} placeholder={placeholder} size='small' classes={{ root: classes.root }} />
     </div>
   )
 }
