@@ -13,6 +13,7 @@ const useStyles = makeStyles({
       listStyleType: 'none',
       '& li': {
         margin: '1rem 0',
+        textTransform: 'capitalize',
         '& a': {
           color: 'var(--base)'
         }
