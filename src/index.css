@@ -1,13 +1,34 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Leckerli+One&display=swap');
+
+:root {
+  --base: #071B85;
+  --alt: #FF5C00;
+  --light: #E5E5E5;
+  --dark: #000;
+  --mid: #081F4A;
+  --error: #F02525;
+  --success: #23F534;
+  --lato: 'Lato', sans-serif;
+  --leck: 'Leckerli One', cursive;
+  --transition: all 0.5s ease;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 0 2rem;
+  font-family: var(--lato);
+  overflow-x: hidden;
+}
+
+main {
+  padding: 3rem 2rem;
+}
+
+a {
+  text-decoration: none;
 }
