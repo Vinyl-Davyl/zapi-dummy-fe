@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, IconButton, Stack, Toolbar, Typography } from '@mui/material'
 import { AccountCircleOutlined } from '@mui/icons-material'
@@ -23,9 +23,9 @@ const useStyles = makeStyles({
     }
 })
 
-const Navbar = () => {
+const Navbar = ({ query, setQuery }) => {
     const classes = useStyles()
-    const [value, setValue] = useState('')
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const { isLoggedIn } = useSelector(store => store.user)
     const { isOpen } = useSelector(store => store.modal)
@@ -45,7 +45,7 @@ const Navbar = () => {
                 </Typography>
             </Stack>
 
-           <InputField type='text' value={value} onChange={(e) => setValue(e.target.value)} placeholder='Search...' />
+           <InputField type='text' value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' onFocus={() => navigate('/search')} />
 
            {isLoggedIn ? 
            <Button variant='contained' onClick={() => dispatch(openModal())}>

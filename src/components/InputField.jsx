@@ -28,18 +28,18 @@ const useStyles = makeStyles(theme =>createStyles({
       color: 'var(--base)',
       fontWeight: 400,
       '&.MuiFormLabel-root.Mui-focused': {
-        color: 'var(--light)'
+        color: 'var(--base)'
       }
     }
   }
 }))
 
-const InputField = ({ type, label, name, value, onChange, placeholder }) => {
+const InputField = ({ type, label, name, value, onChange, onFocus, placeholder, fullWidth }) => {
   const classes = useStyles()
 
   return (
     <div className={classes.formControl}>
-        <TextField type={type} label={label} name={name} value={value} onChange={onChange} placeholder={placeholder} size='small' classes={{ root: classes.root }} />
+        <TextField fullWidth={fullWidth} type={type} label={label} name={name} value={value} onChange={onChange} onFocus={onFocus} placeholder={placeholder} size='small' classes={{ root: classes.root }} />
     </div>
   )
 }

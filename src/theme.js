@@ -31,6 +31,11 @@ export const theme = createTheme({
                         color: 'var(--error)',
                         borderColor: 'var(--error)'
                     }
+                },
+                text: {
+                    color: 'var(--dark)',
+                    margin: '1rem 0',
+                    border: '1px solid var(--dark)'
                 }
             }
         }
