@@ -12,6 +12,8 @@
 
 - Maintain the same convention for naming, import and exporting custom files.
 
-- Check here for the [routing]('https://cacoo.com/diagrams/aGR874WctxJv1kA2/D1D31') workflow
+- Check here for the [routing workflow](https://cacoo.com/diagrams/aGR874WctxJv1kA2/D1D31).
 
-- Check here for a comprehensive [Redux]('https://youtu.be/bbkBuqC1rU4') tutorial.
+- Check here for a comprehensive [Redux tutorial](https://youtu.be/bbkBuqC1rU4).
+
+- Check here for article on [dynamic routing](https://dev.to/dsckiitdev/dynamic-pages-using-react-router-2pm)
