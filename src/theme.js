@@ -8,10 +8,8 @@ export const theme = createTheme({
         MuiButton: {
             styleOverrides: {
                 contained: {
-                    // height: '',
                     backgroundColor: 'var(--mid)',
                     color: 'var(--alt)',
-                    margin: '1.5rem 0',
                     marginRight: '1rem',            
                     transition: '0.3s ease',
                     textTransform: 'capitalize',
