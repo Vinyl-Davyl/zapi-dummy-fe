@@ -3,13 +3,6 @@ import { TextField } from '@mui/material'
 import { makeStyles, createStyles } from '@mui/styles'
 
 const useStyles = makeStyles(theme =>createStyles({
-  formControl: {
-    width: '80%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '0.5rem 2rem',
-  },
   root: {
     '& .MuiInputBase-input': {
       color: 'var(--base)'
@@ -38,9 +31,7 @@ const InputField = ({ type, label, name, value, onChange, onFocus, placeholder, 
   const classes = useStyles()
 
   return (
-    <div className={classes.formControl}>
-        <TextField fullWidth={fullWidth} type={type} label={label} name={name} value={value} onChange={onChange} onFocus={onFocus} placeholder={placeholder} size='small' classes={{ root: classes.root }} />
-    </div>
+    <TextField fullWidth={fullWidth} type={type} label={label} name={name} value={value} onChange={onChange} onFocus={onFocus} placeholder={placeholder} size='small' classes={{ root: classes.root }} />
   )
 }
 

@@ -8,6 +8,7 @@
   --mid: #081F4A;
   --error: #F02525;
   --success: #23F534;
+  --white: #FFF;
   --lato: 'Lato', sans-serif;
   --leck: 'Leckerli One', cursive;
   --transition: all 0.5s ease;
@@ -26,7 +27,7 @@
 body {
   padding: 0 2rem;
   font-family: var(--lato);
-  overflow-x: hidden;
+  /* overflow: hidden; */
 }
 
 main {
@@ -35,4 +36,8 @@ main {
 
 a {
   text-decoration: none;
+}
+
+.router-section {
+  margin-top: 7rem;
 }
