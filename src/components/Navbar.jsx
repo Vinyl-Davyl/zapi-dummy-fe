@@ -16,13 +16,15 @@ const useStyles = makeStyles({
         borderBottom: '2px solid var(--mid)',
         position: 'fixed',
         top: 0,
-        background: 'var(--white)'
+        left: 0,
+        background: 'var(--white)',
     },
     toolbar: {
+        height: '64px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        margin: '1rem 0'
+        margin: '0.5rem 0',    
     }
 })
 
@@ -42,7 +44,7 @@ const Navbar = ({ query, setQuery }) => {
     <nav className={classes.nav}>
        <Toolbar className={classes.toolbar}>
             <Link to='/' style={{ width: '7%' }}>
-                <img src='/LOGO.svg' alt='zapi' width='100%' />
+                <img src='/LOGO.svg' alt='zapi' width='50px' />
            </Link>
 
            <InputField type='text' value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' onFocus={() => navigate('/search')} />
