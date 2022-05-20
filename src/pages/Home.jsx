@@ -1,10 +1,10 @@
-import React from 'react'
-// import { Link } from 'react-router-dom'
-// import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Stack, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
-import { Carousel, Sidebar } from '../components'
+import { Carousel, LoadingSpinner, Sidebar } from '../components'
+import { getApis } from '../redux/features/api/apiSlice'
 
 const useStyles = makeStyles({
   main: {
@@ -19,10 +19,19 @@ const useStyles = makeStyles({
 
 const Home = () => {
   const classes = useStyles()
+  const { apis, isLoading } = useSelector(store => store.apis)
+  const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(getApis())
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // },[])
+
+  // if(isLoading) return <LoadingSpinner />
 
   return (
     <main className={classes.main}>
-      <Sidebar />
+      <Sidebar {...apis} />
       <section>
         <Stack>
           <Typography variant='h4' gutterBottom>
