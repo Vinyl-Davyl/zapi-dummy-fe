@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, IconButton, Stack, Toolbar, Typography } from '@mui/material'
+import { Button, IconButton, Toolbar } from '@mui/material'
 import { AccountCircleOutlined } from '@mui/icons-material'
 import { makeStyles } from '@mui/styles'
 
@@ -13,13 +13,18 @@ import { openModal, closeModal } from '../redux/features/modal/modalSlice'
 const useStyles = makeStyles({
     nav: {
         width: '100%',
-        borderBottom: '2px solid var(--mid)'
+        borderBottom: '2px solid var(--mid)',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        background: 'var(--white)',
     },
     toolbar: {
+        height: '64px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        margin: '1rem 0'
+        margin: '0.5rem 0',    
     }
 })
 
@@ -38,12 +43,9 @@ const Navbar = ({ query, setQuery }) => {
         }}/>}
     <nav className={classes.nav}>
        <Toolbar className={classes.toolbar}>
-            <Stack component={Link} to='/' direction='row' alignItems='center' width='30%'>
-                <img src='/LOGO.svg' alt='zapi' width='20%' />
-                <Typography variant='h5' marginLeft={2}>
-               Z-API
-                </Typography>
-            </Stack>
+            <Link to='/' style={{ width: '7%' }}>
+                <img src='/LOGO.svg' alt='zapi' width='50px' />
+           </Link>
 
            <InputField type='text' value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' onFocus={() => navigate('/search')} />
 

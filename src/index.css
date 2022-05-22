@@ -8,6 +8,7 @@
   --mid: #081F4A;
   --error: #F02525;
   --success: #23F534;
+  --white: #FFF;
   --lato: 'Lato', sans-serif;
   --leck: 'Leckerli One', cursive;
   --transition: all 0.5s ease;
@@ -26,7 +27,7 @@
 body {
   padding: 0 2rem;
   font-family: var(--lato);
-  overflow-x: hidden;
+  /* overflow: hidden; */
 }
 
 main {
@@ -35,4 +36,32 @@ main {
 
 a {
   text-decoration: none;
+}
+
+.router-section {
+  margin-top: 5rem;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: var(--light);
+  display: grid;
+  place-items: center;
+  position: absolute;
+  left: 0;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  border: 10px solid var(--base);
+  border-top-color: var(--light);
+  border-radius: 50%;
+  animation: spin 1s infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg)}
+  100% { transform: rotate(360deg)}
 }
