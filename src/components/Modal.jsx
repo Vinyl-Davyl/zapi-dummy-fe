@@ -1,29 +1,32 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { Button, Stack, Typography } from '@mui/material'
+import { Button, Card, Stack, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 import { closeModal } from '../redux/features/modal/modalSlice'
 
 const useStyles = makeStyles({
     modal: {
-        width: '35vw',
-        height: '25vh',
+        width: '60%',
+        height: '60%',
         display: 'grid',
         placeItems: 'center',
-        backgroundColor: 'var(--light)',
         borderRadius: '5px',
         borderBottom: '3px solid var(--error)',
         padding: '0 1rem',
-        textAlign: 'center'
+        textAlign: 'center',
+        '@media screen and (max-width: 800px)': {
+            width: '90%',
+        }
     },
-    backdrop: {
+    overlay: {
         width: '100vw',
         height: '100vh',
         display: 'grid',
         placeItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        position: 'absolute',
+        backgroundColor: 'rgba(111, 126, 140, 0.2)',
+        backdropFilter: 'blur(2px)',
+        position: 'fixed',
         top: 0,
         left: 0,
         zIndex: 1
@@ -35,8 +38,8 @@ const Modal = ({ message, confirm }) => {
     const dispatch = useDispatch()
 
   return (
-    <div className={classes.backdrop}>
-        <div className={classes.modal}>
+    <div className={classes.overlay} onClick={() => dispatch(closeModal())}>
+        <Card className={classes.modal}>
             <Typography variant='h6' color='error' marginTop={5}>
                 {message}
             </Typography>
@@ -49,7 +52,7 @@ const Modal = ({ message, confirm }) => {
                     Close
                 </Button>
             </Stack>
-        </div>
+        </Card>
     </div>
   )
 }

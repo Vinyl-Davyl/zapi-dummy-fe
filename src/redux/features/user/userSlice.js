@@ -12,8 +12,7 @@ const initialState = {
         following: [],
         organizations: []
     },
-    isLoggedIn: false,
-    isLoading: false
+    isLoggedIn: true,
 }
 
 
@@ -22,6 +21,7 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         login: (state, { payload }) => {
+            state.user = payload
             state.isLoggedIn = true
         },
         logout: state => {

@@ -7,14 +7,17 @@ import { Carousel, LoadingSpinner, Sidebar } from '../components'
 import { getApis } from '../redux/features/api/apiSlice'
 
 const useStyles = makeStyles({
+  section: {
+    width: '95%',
+  },
   main: {
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: '1fr 5fr',
-    '@media screen and (max-width: 800px)': {
+    display: 'flex',
+    gap: `1rem`,
+    marginTop: '6rem',
+    '@media screen and (max-width: 1200px)': {
       gridTemplateColumns: '1fr'
     }
-  }
+  },
 })
 
 const Home = () => {
@@ -31,8 +34,8 @@ const Home = () => {
 
   return (
     <main className={classes.main}>
-      <Sidebar {...apis} />
-      <section>
+      <Sidebar />
+      <Stack direction='column' className={classes.section}>
         <Stack>
           <Typography variant='h4' gutterBottom>
             Welcome to the API hub,
@@ -41,11 +44,11 @@ const Home = () => {
             Here you will find our collection of APIs for developers.
           </Typography>
         </Stack>
-        <Carousel header='Recommended APIs' description='APIs curated by RapidAPI and recommended based on functionality offered, performance, and support.' category='recommended' />
-        <Carousel header='Popular APIs' description='APIs that are popular and frequently used on RapidAPI.' category='popular' />
-        <Carousel header='Free Public APIs for developer' description='If you&apos;re new to RapidAPI, this collection is a great place to start exploring APIs that are free to test, specifically updated for 2021.' category='free public' />
+        <Carousel header='Recommended APIs' description='APIs curated by Z-API and recommended based on functionality offered, performance, and support.' category='recommended' />
+        <Carousel header='Popular APIs' description='APIs that are popular and frequently used on Z-API.' category='popular' />
+        <Carousel header='Free Public APIs for developer' description='If you&apos;re new to Z-API, this collection is a great place to start exploring APIs that are free to test, specifically updated for 2021.' category='free public' />
         <Carousel header='Top Weather APIs' description='List of the Best Weather APIs to provide historical and trending weather forecasts.' category='location' />
-      </section>
+      </Stack>
     </main>
   )
 }
