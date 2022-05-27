@@ -1,5 +1,6 @@
 import React from 'react'
 import {Stack, Typography, Divider, Avatar} from '@mui/material'
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 const ApiDetails = ({name, pricing, isVerified, author, lastUpdated, category, featured, image}) => {
   return (
@@ -8,6 +9,7 @@ const ApiDetails = ({name, pricing, isVerified, author, lastUpdated, category, f
    <Stack direction='column'>
      <Stack direction={{xs: 'column', sm: 'column', md: 'row', lg: 'row'}} spacing={2} alignItems='center'>
        <Typography variant='h5'>{name}</Typography>
+          <BookmarkBorderIcon/>
        <Typography variant='body1'>{pricing}</Typography>
        <Typography variant='body1'>
            {isVerified ? 'Verified' : 'Not Verified'}
