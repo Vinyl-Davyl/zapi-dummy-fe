@@ -8,7 +8,7 @@ import { Categories } from '../dummy-categories'
 const useStyles = makeStyles({
   sidebar: {
     height: '100%',
-    padding: '0.5rem 0.25rem',
+    marginRight: '1rem',
     '& ul': {
       listStyleType: 'none',
       '& li': {
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         }
       }
     },
-    '@media screen and (max-width: 800px)': {
+    '@media screen and (max-width: 1200px)': {
       display: 'none'
     }
   },

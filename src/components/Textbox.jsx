@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Paper, Stack, Typography } from '@mui/material'
+import { Avatar, Paper, Stack, Typography } from '@mui/material'
 import { AccessTimeOutlined, BookmarkBorderOutlined, DangerousOutlined, DoneOutlined, ShowChartOutlined, VerifiedOutlined } from '@mui/icons-material'
-import { styled } from '@mui/material/styles'
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles({
   paperOuter: {
-    width: '250px',
+    width: '300px',
+    margin: '1rem 0',
     transition: 'var(--transition)',
     '&:hover': {
       transform: 'Scale(1.03)'
@@ -18,20 +18,8 @@ const useStyles = makeStyles({
   }
 })
 
-const TextWrapper = styled('div')(({ theme }) => ({
-  width: '30px',
-  height: '100%',
-  display: 'grid',
-  placeItems: 'center',
-  backgroundColor: 'var(--base)',
-  fontFamily: 'var(--leck)',
-  color: 'var(--light)',
-  fontSize: '1.25rem',
-  padding: '0.25rem',
-  borderRadius: '5px'
-}))
 
-const Textbox = ({ id, name, description, status }) => {
+const Textbox = ({ id, name, description, status, logo }) => {
   const classes = useStyles()
 
   return (
@@ -40,16 +28,14 @@ const Textbox = ({ id, name, description, status }) => {
         <Paper elevation={3}>
           <div className={classes.paperInner}>
             <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <TextWrapper>
-              T
-            </TextWrapper>
+            <Avatar src={logo} sx={{ width: 32, height: 32, objectFit: 'contain' }} />
             <BookmarkBorderOutlined />
             </Stack>
             <Typography variant='h6' color='textPrimary' marginY={2}>
-              {name}
+              {name || 'API Name'}
             </Typography>
             <Typography variant='subtitle1' color='textSecondary' gutterBottom>
-              {description}
+              {description || 'API Description'}
             </Typography>
             <Stack direction='row' alignItems='center' marginY={2}>
               <Typography variant='subtitle2' color='textSecondary' marginRight={3}>
