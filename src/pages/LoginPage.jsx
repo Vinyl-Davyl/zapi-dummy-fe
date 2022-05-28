@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     width: '60%',
     display: 'grid',
     placeItems: 'center',
-    gap: '1rem',
+    gap: '2rem',
     marginTop: '3rem',
     '@media screen and (max-width: 800px)': {
       width: '100%'
@@ -35,43 +35,34 @@ const useStyles = makeStyles({
 })
 
 const LoginPage = () => {
-  const [isLogInMode, setIsLogInMode] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const classes = useStyles()
-
-  const toggleMode = () => setIsLogInMode(!isLogInMode)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(!email || !password) return alert('Please fill all fields!')
 
-    if(isLogInMode) {
-      console.log('login mode!')
-    } else {
-      console.log('sign up mode!')
-    }
+    console.log({ email, password})
+    setEmail(''); setPassword('');
   }
 
   return (
     <main className={classes.main}>
-      {isLogInMode ?
-      <Typography variant='h5' gutterBottom className={classes.header}>Not signed up yet? <span onClick={toggleMode}>Signup.</span></Typography> :
-      <Typography variant='h5' gutterBottom className={classes.header}>Already signed up? <span onClick={toggleMode}>Login.</span></Typography> }
       
-      <Typography variant='h4' my={2}>
-        {isLogInMode ? 'Login' : 'Signup'}
-      </Typography>
+      
+      <Typography variant='h4' my={2}>Login</Typography>
 
       <form onSubmit={handleSubmit} className={classes.form}>
-        {!isLogInMode && <InputField fullWidth type='text' label='Username' placeholder='Username' />}
-        <InputField fullWidth type='email' label='Email' placeholder='johndoe@example.com' />
-        <InputField fullWidth type='password' label='Password' placeholder='*******' />
-        {!isLogInMode && <InputField fullWidth type='password' label='Re-Type Password' placeholder='*******' />}
+        <InputField fullWidth type='email' label='Email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='johndoe@example.com' />
+        <InputField fullWidth type='password' label='Password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='*******' />
         <Button type='submit' variant='contained'>
-          {isLogInMode ? 'Log in' : 'Sign up'}
+          Login
         </Button>
       </form>
 
       <Stack direction='column' mt={5}>
-        <Typography variant='h5'>Or sign up with</Typography>
+        <Typography variant='h5'>Or sign in with</Typography>
         <Button variant='text'>
           Google <Icon icon='akar-icons:google-fill' style={{ fontSize: '1.5rem', marginLeft: '0.5rem' }} />
         </Button>

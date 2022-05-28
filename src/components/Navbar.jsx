@@ -1,14 +1,15 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, IconButton, Toolbar } from '@mui/material'
-import { AccountCircleOutlined } from '@mui/icons-material'
+import { Badge, Button, IconButton, Stack, Toolbar } from '@mui/material'
+import { NotificationsOutlined, SearchOutlined } from '@mui/icons-material'
 import { makeStyles } from '@mui/styles'
 
-import InputField from './InputField'
-import Modal from './Modal'
+import { Modal, Search, UserMenu } from './index'
 import { logout } from '../redux/features/user/userSlice'
-import { openModal, closeModal } from '../redux/features/modal/modalSlice'
+import { closeModal } from '../redux/features/modal/modalSlice'
+import { openSearchModal, closeSearchModal } from '../redux/features/search/searchSlice'
+
 
 const useStyles = makeStyles({
     nav: {
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
         top: 0,
         left: 0,
         background: 'var(--white)',
+        zIndex: 3
     },
     toolbar: {
         height: '64px',
@@ -28,43 +30,59 @@ const useStyles = makeStyles({
     }
 })
 
-const Navbar = ({ query, setQuery }) => {
+const Navbar = () => {
     const classes = useStyles()
-    const navigate = useNavigate()
     const dispatch = useDispatch()
+
     const { isLoggedIn } = useSelector(store => store.user)
     const { isOpen } = useSelector(store => store.modal)
+    const { isSearchModalOpen } = useSelector(store => store.search)
+
+    const toggleSearch = () => {
+        if(isSearchModalOpen) {
+            dispatch(closeSearchModal())
+        } else {
+            dispatch(openSearchModal())
+        }
+    }
+    
 
   return (
     <>
+     {/* modal for logout confirmatio */}
     {isOpen && <Modal message='Are you sure you want to log out?' confirm={() => {
         dispatch(logout())
         dispatch(closeModal())
         }}/>}
+    {/* search modal */}
+    {isSearchModalOpen && <Search closeModal={() =>dispatch(closeSearchModal())} />}
     <nav className={classes.nav}>
        <Toolbar className={classes.toolbar}>
             <Link to='/' style={{ width: '7%' }}>
                 <img src='/LOGO.svg' alt='zapi' width='50px' />
            </Link>
 
-           <InputField type='text' value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' onFocus={() => navigate('/search')} />
-
-           {isLoggedIn ? 
-           <Button variant='contained' onClick={() => dispatch(openModal())}>
-               Logout
-            </Button> : 
-           <Link to='/login'>
-               <Button variant='contained'>
-                   Login
-                </Button>
-            </Link>}
-           
-           {isLoggedIn && 
-           (<IconButton>
-               <Link to={`/user`}>
-                    <AccountCircleOutlined style={{ color: 'var(--mid)', fontSize: '2rem'}} />
-               </Link>
-           </IconButton>)}
+           <Stack direction='row' spacing={2} alignItems='center'>
+               <IconButton onClick={toggleSearch}>
+                   <SearchOutlined />
+               </IconButton>
+                {!isLoggedIn &&
+                <Link to='/login'>
+                    <Button variant='contained'>
+                        Login
+                    </Button>
+                </Link>}
+                
+                {isLoggedIn &&
+                (<>
+                <IconButton>
+                    <Badge badgeContent={1} color='primary'>
+                        <NotificationsOutlined />
+                    </Badge>
+                </IconButton>
+                <UserMenu />
+                </>)}
+           </Stack>
        </Toolbar>
     </nav>
     </>
