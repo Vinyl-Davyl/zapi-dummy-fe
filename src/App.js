@@ -26,12 +26,13 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<LoginPage />} />
-          <Route path='/api/:id' element={<SingleApi />} />
+          <Route path='/search' element={<Search query={query} />} />
+          <Route path='/SingleApi' element={<SingleApi />} />
           <Route path='/api/categories' element={<Categories />} />
           <Route path='/api/categories/:category' element={<Category />} />
           <Route path='/user/:id' element={<UserProfile />} />
           <Route path='/orgs/:id' />
-          <Route path='/orgs/create-new' element={<CreateOrg />} />
+          <Route path='/createorg' element={<CreateOrg />} />
         </Routes>
       </div>
     </ThemeProvider>
