@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
-import { Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
+import { ForgotPassword, Home, LoginPage, Signup, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
 import { Navbar } from './components'
 import { theme } from './theme'
 
@@ -26,6 +26,8 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<LoginPage />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/api/:id' element={<SingleApi />} />
           <Route path='/api/categories' element={<Categories />} />
           <Route path='/api/categories/:category' element={<Category />} />

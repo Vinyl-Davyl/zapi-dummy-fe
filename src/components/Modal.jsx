@@ -7,8 +7,8 @@ import { closeModal } from '../redux/features/modal/modalSlice'
 
 const useStyles = makeStyles({
     modal: {
-        width: '60%',
-        height: '60%',
+        width: '40%',
+        height: '40%',
         display: 'grid',
         placeItems: 'center',
         borderRadius: '5px',
