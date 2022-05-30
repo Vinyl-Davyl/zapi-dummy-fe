@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Stack, Typography, Button, Select, MenuItem, FormControl, InputLabel} from '@mui/material'
+import { Stack, Typography, Button, FormControl, InputLabel, MenuItem, Select} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 
 import { InputField } from '../components'
@@ -11,19 +11,16 @@ const useStyles = makeStyles({
     alignItems: 'left'
   },
   formControl: {
-    width: '70%'
+    width: '100%'
   }
 })
 
 const CreateOrg = () => {
-  const classes = useStyles();
-  const [value, setValue]= useState('');
+  const [value, setValue] = useState(' ')
+  const classes = useStyles()
+ 
 
-  const handleChange=(e)=>{
-    setValue(e.target.value);
-    console.log(value);
-  }
-  return (
+return (
     <Stack direction ='column'>
       <Stack direction='column' my={2}>
         <Typography variant='h5'>Create Your Organization</Typography>
@@ -31,9 +28,9 @@ const CreateOrg = () => {
       </Stack>
       <form className={classes.form}>
         <Stack direction='column' my={2}>
-          <div className={classes.formControl}>
-             <InputField type= 'text' label= 'Organization Name' placeholder='Org name*'/>
-          </div>
+            <div>
+              <InputField type= 'text' label= 'Organization Name' placeholder='Org name*'/>
+            </div>
         </Stack>
         <Stack direction='row' my={2}>
           <Typography variant='body1'>This business name will own and control this organization account.</Typography>
@@ -53,18 +50,12 @@ const CreateOrg = () => {
             <InputField type= 'text' label= 'Username or Email' placeholder='name@example.com'/>
           </div>
           </Stack>
-          <Stack direction='row' mx={2}>
-          <div>
-            <InputField type= 'text' label= 'Role' placeholder='Role'/>
-          </div>
-            {/* <FormControl fullWidth>
-              <InputLabel>Role</InputLabel>
-            <Select value={value} onChange={handleChange}>
-              <MenuItem value=''>Role</MenuItem>
-              <MenuItem value='developer'>Developer</MenuItem>
-              <MenuItem value='admin'>Admin</MenuItem>
-            </Select>
-            </FormControl> */}
+          <Stack direction='row' mx={2} width={155}>
+              <Select style={{ width:'100%', height:'43px'}} value={value} onChange={(e) => setValue(e.target.value)} fullWidth>
+                <MenuItem value=' '>Role</MenuItem>
+                <MenuItem value='Developer'>Developer</MenuItem>
+                <MenuItem value='Admin'>Admin</MenuItem>
+              </Select>
           </Stack>
         </Stack>
         <Stack direction='column' my={2}>
@@ -72,11 +63,9 @@ const CreateOrg = () => {
             <InputField type= 'text' label= 'Role at the organization' placeholder='Your role at the organization (Optional)' id='halfWidth'/>
           </div>
         </Stack>
-         <div>
-          <Button type='submit' variant='contained'>
+          <Button style={{width:'15%', height:'45px'}} type='submit' variant='contained'>
           Confirm &amp; Continue
           </Button>
-        </div>
       </form>
   </Stack>
   )

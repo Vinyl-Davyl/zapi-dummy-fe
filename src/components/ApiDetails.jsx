@@ -1,5 +1,5 @@
 import React from 'react'
-import {Stack, Typography, Divider, Avatar} from '@mui/material'
+import {Stack, Typography, Divider, Avatar, Link} from '@mui/material'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 const ApiDetails = ({name, pricing, isVerified, author, lastUpdated, category, featured, image}) => {
@@ -16,13 +16,13 @@ const ApiDetails = ({name, pricing, isVerified, author, lastUpdated, category, f
        </Typography>
      </Stack>
      <Stack direction={{xs: 'column', sm: 'column', md: 'row', lg: 'row'}} alignItems='center' spacing={1}>
-       <Typography variant='subtitle1'>By {author}</Typography>
+       <Typography variant='subtitle1'>By <Link> {author}</Link></Typography>
           <Divider orientation='vertical' flexItem></Divider>
-       <Typography variant='subtitle1'>Updated {lastUpdated} ago</Typography>
+       <Typography variant='subtitle1'>Updated <Link>{lastUpdated}</Link> ago</Typography>
           <Divider orientation='vertical' flexItem></Divider>
-       <Typography variant='subtitle1'>{category}</Typography>
+       <Typography variant='subtitle1'> <Link>{category}</Link></Typography>
           <Divider orientation='vertical' flexItem></Divider>
-       <Typography variant='subtitle1'>Featured in {featured}</Typography>
+       <Typography variant='subtitle1'>Featured in <Link>{featured}</Link></Typography>
       </Stack>
     </Stack>
   </Stack>
