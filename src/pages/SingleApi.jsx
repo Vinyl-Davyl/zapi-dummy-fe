@@ -14,22 +14,18 @@ const SingleApi = () => {
       </Stack>
       <Tabs value={tab} onChange={(e, newValue)=>setTab(newValue)}>
         <Tab label='Endpoints'/>
-        <Tab label='About'/>
         <Tab label='Tutorials' />
-        <Tab label='Discussions'/>
         <Tab label='Pricing'/>
       </Tabs>
       <Stack direction={{xs: 'column', sm: 'column', md: 'row', lg: 'row'}} marginTop={2} spacing={2} alignItems='center'>
         <Typography variant='h5'>Weather Map Api Documentation</Typography>
       </Stack>
       <Stack direction={{xs: 'column', sm: 'column', md: 'row', lg: 'row'}} spacing={2} my={1}alignItems='center'>
-          <Typography variant='subtitle1'>Get weather and weather forecasts for multiple cities.</Typography>
+        <Typography variant='subtitle1'>Get weather and weather forecasts for multiple cities.</Typography>
       </Stack>
       <TabPanel value={tab} index={0}>Endpoints</TabPanel>
-      <TabPanel value={tab} index={1}>About</TabPanel>
-      <TabPanel value={tab} index={2}>Tutorial</TabPanel>
-      <TabPanel value={tab} index={3}>Discussions</TabPanel>
-      <TabPanel value={tab} index={4}>Pricing</TabPanel>
+      <TabPanel value={tab} index={1}>Tutorial</TabPanel>
+      <TabPanel value={tab} index={2}>Pricing</TabPanel>
     </Stack>
   )
 }
