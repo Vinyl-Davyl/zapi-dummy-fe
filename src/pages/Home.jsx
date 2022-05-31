@@ -8,7 +8,7 @@ import { getApis } from '../redux/features/api/apiSlice'
 
 const useStyles = makeStyles({
   section: {
-    width: '95%',
+    width: '100%',
   },
   main: {
     display: 'flex',

@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Divider, ListItem, Stack, Typography } from '@mui/material'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Button, Checkbox, Divider, FormControlLabel, ListItem, Stack, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { CheckCircleOutline } from '@mui/icons-material'
 import { Icon } from '@iconify/react'
 
 import { InputField } from '../components'
+import { login } from '../redux/features/user/userSlice'
 
 const useStyles = makeStyles({
   main: {
@@ -55,38 +57,48 @@ const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const classes = useStyles()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if(!email || !password) return alert('Please fill all fields!')
 
-    console.log({ email, password})
-    setEmail(''); setPassword('');
+    try {
+      dispatch(login({email, password}))
+      setEmail(''); setPassword('');
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
+    
   }
 
   return (
     <main className={classes.main}>
       <section className={classes.section}>
-        <Typography variant='h4' my={2}>Login</Typography>
+        <Typography variant='h4' my={2}>Welcome back</Typography>
         <form onSubmit={handleSubmit} className={classes.form}>
           <InputField fullWidth type='email' label='Email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='johndoe@example.com' />
           <InputField fullWidth type='password' label='Password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='*******' />
-          <Typography variant='body2' color='textSecondary' my={2}>
-            <Link to='/forgot-password'>
-              Forgot password?
-            </Link>
-          </Typography>
+          <FormControlLabel control={<Checkbox size='small' />} label='Keep me logged in' />
           <Button type='submit' variant='contained'>
             Login
           </Button>
         </form>
+        <Typography variant='body2' color='textSecondary' my={2}>
+          <Link to='/forgot-password'>
+            Forgot password?
+          </Link>
+        </Typography>
         <Typography variant='h6' my={2}>
           Don't have an account?
           <Link to='/signup'> Sign up</Link>
         </Typography>
-        <Divider variant='middle' />
         <Stack direction='column' width='50%' mt={5}>
-          <Typography variant='h5'>Or sign in with</Typography>
+          <Divider variant='middle'>
+            <Typography variant='body1'>or continue with</Typography>
+          </Divider>
           <Button variant='text'>
             Google <Icon icon='akar-icons:google-fill' style={{ fontSize: '1.5rem', marginLeft: '0.5rem' }} />
           </Button>

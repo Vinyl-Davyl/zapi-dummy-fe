@@ -40,9 +40,7 @@ export const theme = createTheme({
         MuiDivider: {
             styleOverrides: {
                 root: {
-                    width: '100%',
-                    backgroundColor: '#757575',
-                    borderColor: '#757575',
+                    borderColor: 'var(--mid)',
                     borderBottomWidth: 'thin',
                 }
             }
