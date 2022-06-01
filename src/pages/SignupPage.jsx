@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Button, Stack, Typography, Divider } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { Icon } from '@iconify/react'
+import { Alert } from '@mui/material'
 
 import { InputField } from '../components'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
     main: {
@@ -35,7 +37,7 @@ const useStyles = makeStyles({
 })
 
 const SignupPage = () => {
-    const [userName, setUserName] = useState('')
+    const [fullname, setFullname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(null)
@@ -44,19 +46,13 @@ const SignupPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (userName.length === 0) {
-            setError('Please input a valid username')
-        } else {
+        if (password.length > 6) {
             setError(null)
+        } else {
+            return setError('Password must be more than 6 characters')   
         }
 
-        if (password.length === 0) {
-            setError('Please input a valid password')
-        } else {
-            setError(null)
-        }
-
-        setUserName('')
+        setFullname('')
         setEmail('')
         setPassword('')
     }
@@ -70,14 +66,16 @@ const SignupPage = () => {
                 <InputField
                     fullWidth
                     type='text'
-                    label='username'
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    placeholder='Enter your Username'
+                    required
+                    label='Full Name'
+                    value={fullname}
+                    onChange={(e) => setFullname(e.target.value)}
+                    placeholder='Enter your Name'
                 />
                 <InputField
                     fullWidth
                     type='email'
+                    required
                     label='Email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -86,11 +84,13 @@ const SignupPage = () => {
                 <InputField
                     fullWidth
                     type='password'
+                    required
                     label='Password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder='*******'
+                    placeholder='Password must be more than six characters'
                 />
+                {error && <Alert severity="error">{error}</Alert>}
                <Button
                     fullWidth
                     type='submit'
@@ -100,11 +100,12 @@ const SignupPage = () => {
                 >
                     Sign Up
                 </Button>
-                {error && <Typography>{error}</Typography>}
             </form>
 
-            <Typography variant='h5' mt={5}>Or sign in with:</Typography>
-            <Stack direction='row' mt={5}  divider={<Divider orientation="vertical" flexItem />} spacing={3}>
+            <Typography variant='body1' mt={3}>Already on Z-API? <Link to='/login'>Login</Link></Typography>
+
+            <Typography variant='h5' mt={3}>Or sign in with:</Typography>
+            <Stack direction='row' mt={3}  divider={<Divider orientation="vertical" flexItem />} spacing={3}>
                 <Button variant='text'>
                     Google <Icon icon='akar-icons:google-fill' style={{ fontSize: '1.5rem', marginLeft: '0.5rem' }} />
                 </Button>
