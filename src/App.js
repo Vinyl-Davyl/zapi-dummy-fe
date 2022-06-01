@@ -6,6 +6,7 @@ import { makeStyles } from '@mui/styles'
 import { Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
 import { Navbar } from './components'
 import { theme } from './theme'
+import SignupPage from './pages/SignupPage'
 
 const useStyles = makeStyles({
   router_container: {
@@ -26,7 +27,8 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<LoginPage />} />
-          <Route path='/search' element={<Search query={query} />} />
+          <Route path='/signup' element={<SignupPage />} />
+          {/* <Route path='/search' element={<Search query={query} />} /> */}
           <Route path='/api/:id' element={<SingleApi />} />
           <Route path='/api/categories' element={<Categories />} />
           <Route path='/api/categories/:category' element={<Category />} />
