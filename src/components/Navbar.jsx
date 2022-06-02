@@ -26,7 +26,7 @@ const useStyles = makeStyles({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        margin: '0.5rem 0',    
+        margin: '0.5rem 0',
     }
 })
 
@@ -39,54 +39,57 @@ const Navbar = () => {
     const { isSearchModalOpen } = useSelector(store => store.search)
 
     const toggleSearch = () => {
-        if(isSearchModalOpen) {
+        if (isSearchModalOpen) {
             dispatch(closeSearchModal())
         } else {
             dispatch(openSearchModal())
         }
     }
-    
 
-  return (
-    <>
-     {/* modal for logout confirmatio */}
-    {isOpen && <Modal message='Are you sure you want to log out?' confirm={() => {
-        dispatch(logout())
-        dispatch(closeModal())
-        }}/>}
-    {/* search modal */}
-    {isSearchModalOpen && <Search closeModal={() =>dispatch(closeSearchModal())} />}
-    <nav className={classes.nav}>
-       <Toolbar className={classes.toolbar}>
-            <Link to='/' style={{ width: '7%' }}>
-                <img src='/LOGO.svg' alt='zapi' width='50px' />
-           </Link>
 
-           <Stack direction='row' spacing={2} alignItems='center'>
-               <IconButton onClick={toggleSearch}>
-                   <SearchOutlined />
-               </IconButton>
-                {!isLoggedIn &&
-                <Link to='/login'>
-                    <Button variant='contained'>
-                        Login
-                    </Button>
-                </Link>}
-                
-                {isLoggedIn &&
-                (<>
-                <IconButton>
-                    <Badge badgeContent={1} color='primary'>
-                        <NotificationsOutlined />
-                    </Badge>
-                </IconButton>
-                <UserMenu />
-                </>)}
-           </Stack>
-       </Toolbar>
-    </nav>
-    </>
-  )
+    return (
+        <>
+            {/* modal for logout confirmatio */}
+            {isOpen && <Modal message='Are you sure you want to log out?' confirm={() => {
+                dispatch(logout())
+                dispatch(closeModal())
+            }} />}
+            {/* search modal */}
+            {isSearchModalOpen && <Search closeModal={() => dispatch(closeSearchModal())} />}
+            <nav className={classes.nav}>
+                <Toolbar className={classes.toolbar}>
+                    <Link to='/' style={{ width: '7%' }}>
+                        <img src='/LOGO.svg' alt='zapi' width='50px' />
+                    </Link>
+
+                    <Stack direction='row' spacing={2} alignItems='center'>
+                        <IconButton onClick={toggleSearch}>
+                            <SearchOutlined />
+                        </IconButton>
+                        {!isLoggedIn &&
+                            <Link to='/login'>
+                                <Button variant='contained'>
+                                    Login
+                                </Button>
+                            </Link>}
+                        {!isLoggedIn && <Link to='/signup'>
+                            <Button variant='outlined'>Sign Up</Button>
+                        </Link>}
+
+                        {isLoggedIn &&
+                            (<>
+                                <IconButton>
+                                    <Badge badgeContent={1} color='primary'>
+                                        <NotificationsOutlined />
+                                    </Badge>
+                                </IconButton>
+                                <UserMenu />
+                            </>)}
+                    </Stack>
+                </Toolbar>
+            </nav>
+        </>
+    )
 }
 
 export default Navbar

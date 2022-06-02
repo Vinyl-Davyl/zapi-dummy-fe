@@ -7,7 +7,11 @@ import { makeStyles } from '@mui/styles'
 import { ForgotPassword, Home, LoginPage, Signup, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
 import { Navbar } from './components'
 import { theme } from './theme'
+<<<<<<< HEAD
 import { getApis } from './redux/features/api/apiSlice'
+=======
+import SignupPage from './pages/SignupPage'
+>>>>>>> 93c52cd54c5f65053e1462cbc660fe3757330708
 
 const useStyles = makeStyles({
   router_container: {
@@ -34,8 +38,13 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<LoginPage />} />
+<<<<<<< HEAD
           <Route path='/signup' element={<Signup />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
+=======
+          <Route path='/signup' element={<SignupPage />} />
+          {/* <Route path='/search' element={<Search query={query} />} /> */}
+>>>>>>> 93c52cd54c5f65053e1462cbc660fe3757330708
           <Route path='/api/:id' element={<SingleApi />} />
           <Route path='/api/categories' element={<Categories />} />
           <Route path='/api/categories/:category' element={<Category />} />
