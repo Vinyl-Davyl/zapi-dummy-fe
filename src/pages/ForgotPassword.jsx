@@ -32,7 +32,7 @@ const ForgotPassword = () => {
   }
 
   return (
-  <Stack direction='column' alignItems='center' textAlign='center' py={1} px={2}>
+  <Stack direction='column' height='60vh' alignItems='center' justifyContent='center' textAlign='center' py={1} px={2}>
     <Typography variant='h5' gutterBottom>
       Forgot your password?
     </Typography>

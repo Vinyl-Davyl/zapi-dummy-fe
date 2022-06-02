@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { ThemeProvider } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 import { ForgotPassword, Home, LoginPage, Signup, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
 import { Navbar } from './components'
 import { theme } from './theme'
+import { getApis } from './redux/features/api/apiSlice'
 
 const useStyles = makeStyles({
   router_container: {
@@ -18,6 +20,12 @@ const useStyles = makeStyles({
 const App = () => {
   const [query, setQuery] = useState('')
   const classes = useStyles()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getApis)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <ThemeProvider theme={theme}>
