@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Avatar, Divider, Tab, Tabs, Stack, Typography} from '@mui/material'
+import { Tab, Tabs, Stack, Typography} from '@mui/material'
 
 import logo from '../assets/LOGO (3).png'
 import {TabPanel, ApiMetrics, ApiDetails} from '../components'

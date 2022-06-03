@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 import { Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
-import { Navbar } from './components'
+import { Navbar, Search } from './components'
 import { theme } from './theme'
 
 const useStyles = makeStyles({
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     padding: '0 1rem',
     marginTop: '6rem',
   }
-})
+}) 
 
 const App = () => {
   const [query, setQuery] = useState('')
