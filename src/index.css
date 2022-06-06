@@ -25,6 +25,7 @@
 }
 
 body {
+  width: 100vw;
   font-family: var(--lato);
   overflow-x: hidden;
 }
