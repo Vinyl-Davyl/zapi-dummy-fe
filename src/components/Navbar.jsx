@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Badge, Button, IconButton, Stack, Toolbar } from '@mui/material'
+import { AppBar, Badge, Button, Grid, IconButton, Stack, Toolbar } from '@mui/material'
 import { NotificationsOutlined, SearchOutlined } from '@mui/icons-material'
 import { makeStyles } from '@mui/styles'
 
@@ -56,7 +56,7 @@ const Navbar = () => {
             }} />}
             {/* search modal */}
             {isSearchModalOpen && <Search closeModal={() => dispatch(closeSearchModal())} />}
-            <nav className={classes.nav}>
+            {isLoggedIn && (<nav className={classes.nav}>
                 <Toolbar className={classes.toolbar}>
                     <Link to='/' style={{ width: '7%' }}>
                         <img src='/LOGO.svg' alt='zapi' width='50px' />
@@ -66,15 +66,6 @@ const Navbar = () => {
                         <IconButton onClick={toggleSearch}>
                             <SearchOutlined />
                         </IconButton>
-                        {!isLoggedIn &&
-                            <Link to='/login'>
-                                <Button variant='contained'>
-                                    Login
-                                </Button>
-                            </Link>}
-                        {!isLoggedIn && <Link to='/signup'>
-                            <Button variant='outlined'>Sign Up</Button>
-                        </Link>}
 
                         {isLoggedIn &&
                             (<>
@@ -87,7 +78,35 @@ const Navbar = () => {
                             </>)}
                     </Stack>
                 </Toolbar>
-            </nav>
+            </nav>)}
+
+            {!isLoggedIn &&
+                (<nav>
+                    <AppBar>
+                        <Toolbar className={classes.toolbar}>
+                            <Link to='/' style={{ width: '7%' }}>
+                                <img src='/LOGO.svg' alt='zapi' width='50px' />
+                            </Link>
+
+                            <Grid container justifyContent='end' spacing={3}>
+                                <Grid item>
+                                    <Link to='/login'>
+                                        <Button variant='contained'>
+                                            Login
+                                        </Button>
+                                    </Link>
+                                </Grid>
+                                <Grid item>
+                                    <Link to='/signup'>
+                                        <Button variant='outlined'>Sign Up</Button>
+                                    </Link>
+                                </Grid>
+                            </Grid>
+
+                        </Toolbar>
+                    </AppBar>
+                </nav>
+                )}
         </>
     )
 }
