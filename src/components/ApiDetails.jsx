@@ -3,10 +3,11 @@ import {Stack, Typography, Divider, Avatar, Link} from '@mui/material'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 const ApiDetails = ({name, pricing, isVerified, author, lastUpdated, category, featured, image}) => {
+  
   return (
-    <Stack direction={{xs: 'column', sm: 'column', md: 'row', lg: 'row'}} alignItems='center'>
+  <Stack direction={{xs: 'column', sm: 'column', md: 'row', lg: 'row'}} alignItems='center'>
     <Avatar src={image} sx={{width: 50, height: 50, margin: '0 1rem'}} />
-   <Stack direction='column'>
+    <Stack direction='column'>
      <Stack direction={{xs: 'column', sm: 'column', md: 'row', lg: 'row'}} spacing={2} alignItems='center'>
        <Typography variant='h5'>{name}</Typography>
           <BookmarkBorderIcon/>

@@ -36,6 +36,14 @@ export const theme = createTheme({
                     border: '1px solid var(--dark)'
                 }
             }
+        },
+        MuiDivider: {
+            styleOverrides: {
+                root: {
+                    borderColor: 'var(--mid)',
+                    borderBottomWidth: 'thin',
+                }
+            }
         }
     },
     palette: {
