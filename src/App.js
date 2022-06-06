@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { ThemeProvider } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
+
 import { ForgotPassword, Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
 import { Navbar } from './components'
 import { theme } from './theme'
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
     padding: '0 1rem',
     marginTop: '6rem',
   }
-})
+}) 
 
 const App = () => {
   const [query, setQuery] = useState('')
