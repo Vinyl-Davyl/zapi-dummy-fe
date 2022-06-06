@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Stack, Typography } from '@mui/material'
-import { ChevronLeft, ChevronRight} from '@mui/icons-material'
+
 import { makeStyles } from '@mui/styles'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -13,67 +13,16 @@ const array = ['Weather API', 'Entertainmet API', 'Transport API', 'Finance API'
 
 const useStyles = makeStyles({
   carousel_container: {
-    width: '100%',
+    width: '95%',
     height: '250px',
     position: 'relative',
     margin: '0 0.5rem',
-    padding: '0',
-    '@media screen and (max-width: 400px)': {
-      width: '350px'
-    }
-  },
-  arrow_left : {
-    position: 'absolute',
-    top: '50%',
-    left: -35,
-    transform: 'translateY(-50%)',
-    width: '2rem',
-    height: '2rem',
-    display: 'grid',
-    placeItems: 'center',
-    background: 'var(--light)',
-    borderRadius: '50%',
-    zIndex: '1',
-    cursor: 'pointer',
-  },
-  arrow_right : {
-    position: 'absolute',
-    top: '50%',
-    right: 30,
-    transform: 'translateY(-50%)',
-    width: '2rem',
-    height: '2rem',
-    display: 'grid',
-    placeItems: 'center',
-    background: 'var(--light)',
-    borderRadius: '50%',
-    zIndex: '1',
-    cursor: 'pointer',
-    '@media screen and (max-width: 400px)': {
-      right: 15,
+    padding: '0 1rem',
+    '@media screen and (max-width: 1100px)': {
+      width: '100%'
     }
   }
 })
-
-const NextArrow = (props) => {
-  const classes = useStyles()
-  const { onClick } = props
-  return (
-    <div className={classes.arrow_right} onClick={onClick}>
-      <ChevronRight />
-    </div>
-  )
-}
-
-const PrevArrow = (props) => {
-  const classes = useStyles()
-  const { onClick } = props
-  return (
-    <div className={classes.arrow_left} onClick={onClick}>
-      <ChevronLeft />
-    </div>
-  )
-}
 
 const CarouselComponent = ({ header, description, category }) => {
   const classes = useStyles()
@@ -83,11 +32,9 @@ const CarouselComponent = ({ header, description, category }) => {
     speed: 400,
     slidesToShow: 3,
     slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 900,
+        breakpoint: 1000,
         settings: { slidesToShow: 2, slidesToScroll: 1, }
       },
       {

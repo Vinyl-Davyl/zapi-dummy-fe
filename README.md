@@ -2,13 +2,13 @@
 
 ## Note to devs
 
-- All routing has been done and pages created in the [pages]('./src/pages') folder.
+- All routing has been done and pages created in the [pages](./src/pages) folder. Do not make any changes to the URL paths in the [App.js](./src/App.js).
 
 - Check the components folder for components you need before creating one.
 
 - The store has been setup.
 
-- Do not touch the [store]('./src/redux/store.js') unless absolutely needed.
+- Do not touch the [store](./src/redux/store.js) unless absolutely needed.
 
 - Maintain the same convention for naming, import and exporting custom files.
 

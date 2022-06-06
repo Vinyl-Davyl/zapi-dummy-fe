@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { Stack, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 import { Carousel, LoadingSpinner, Sidebar } from '../components'
-import { getApis } from '../redux/features/api/apiSlice'
 
 const useStyles = makeStyles({
   section: {
-    width: '95%',
+    width: '100%',
   },
   main: {
     display: 'flex',
@@ -23,12 +22,6 @@ const useStyles = makeStyles({
 const Home = () => {
   const classes = useStyles()
   const { apis, isLoading } = useSelector(store => store.apis)
-  const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(getApis())
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // },[])
 
   // if(isLoading) return <LoadingSpinner />
 

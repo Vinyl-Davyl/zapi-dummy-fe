@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { ThemeProvider } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
-import { Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
+import { ForgotPassword, Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
 import { Navbar } from './components'
 import { theme } from './theme'
+import { getApis } from './redux/features/api/apiSlice'
+// @taiwoAkindele add this component to the index.js file as a named export
 import SignupPage from './pages/SignupPage'
 
 const useStyles = makeStyles({
@@ -19,6 +22,12 @@ const useStyles = makeStyles({
 const App = () => {
   const [query, setQuery] = useState('')
   const classes = useStyles()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getApis)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <ThemeProvider theme={theme}>
@@ -27,8 +36,11 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<LoginPage />} />
+          {/* @taiwoAkindele there was a component here */}
+          {/* <Route path='/signup' element={<Signup />} /> */}
+          <Route path='/forgot-password' element={<ForgotPassword />} />
+          {/* @taiwoAkindele and you created another one here */}
           <Route path='/signup' element={<SignupPage />} />
-          {/* <Route path='/search' element={<Search query={query} />} /> */}
           <Route path='/api/:id' element={<SingleApi />} />
           <Route path='/api/categories' element={<Categories />} />
           <Route path='/api/categories/:category' element={<Category />} />
