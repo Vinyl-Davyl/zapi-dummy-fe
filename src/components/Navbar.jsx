@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppBar, Badge, Button, Grid, IconButton, Stack, Toolbar } from '@mui/material'
@@ -6,7 +6,7 @@ import { NotificationsOutlined, SearchOutlined } from '@mui/icons-material'
 import { makeStyles } from '@mui/styles'
 
 import { Modal, Search, UserMenu } from './index'
-import { logout } from '../redux/features/user/userSlice'
+import { logout, signup, login } from '../redux/features/user/userSlice'
 import { closeModal } from '../redux/features/modal/modalSlice'
 import { openSearchModal, closeSearchModal } from '../redux/features/search/searchSlice'
 
@@ -38,6 +38,9 @@ const Navbar = () => {
     const { isOpen } = useSelector(store => store.modal)
     const { isSearchModalOpen } = useSelector(store => store.search)
 
+    const [toggle, setToggle] = useState(true)
+
+
     const toggleSearch = () => {
         if (isSearchModalOpen) {
             dispatch(closeSearchModal())
@@ -46,6 +49,9 @@ const Navbar = () => {
         }
     }
 
+    const handleToggle = () => {
+        setToggle(!toggle)
+    }
 
     return (
         <>
@@ -67,15 +73,12 @@ const Navbar = () => {
                             <SearchOutlined />
                         </IconButton>
 
-                        {isLoggedIn &&
-                            (<>
-                                <IconButton>
-                                    <Badge badgeContent={1} color='primary'>
-                                        <NotificationsOutlined />
-                                    </Badge>
-                                </IconButton>
-                                <UserMenu />
-                            </>)}
+                        <IconButton>
+                            <Badge badgeContent={1} color='primary'>
+                                <NotificationsOutlined />
+                            </Badge>
+                        </IconButton>
+                        <UserMenu />
                     </Stack>
                 </Toolbar>
             </nav>)}
@@ -89,18 +92,18 @@ const Navbar = () => {
                             </Link>
 
                             <Grid container justifyContent='end' spacing={3}>
-                                <Grid item>
+                                {toggle ? <Grid item>
                                     <Link to='/login'>
-                                        <Button variant='contained'>
+                                        <Button name="login" onClick={handleToggle} variant='contained'>
                                             Login
                                         </Button>
                                     </Link>
-                                </Grid>
-                                <Grid item>
-                                    <Link to='/signup'>
-                                        <Button variant='outlined'>Sign Up</Button>
-                                    </Link>
-                                </Grid>
+                                </Grid> :
+                                    <Grid item>
+                                        <Link to='/signup'>
+                                            <Button name="signup" onClick={handleToggle} variant='outlined'>Sign Up</Button>
+                                        </Link>
+                                    </Grid>}
                             </Grid>
 
                         </Toolbar>
