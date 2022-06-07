@@ -92,18 +92,21 @@ const Navbar = () => {
                             </Link>
 
                             <Grid container justifyContent='end' spacing={3}>
-                                {toggle ? <Grid item>
-                                    <Link to='/login'>
-                                        <Button name="login" onClick={handleToggle} variant='contained'>
-                                            Login
-                                        </Button>
-                                    </Link>
-                                </Grid> :
+                                {toggle ?
+                                    <Grid item>
+                                        <Link to='/login'>
+                                            <Button name="login" onClick={handleToggle} variant='contained'>
+                                                Login
+                                            </Button>
+                                        </Link>
+                                    </Grid> :
                                     <Grid item>
                                         <Link to='/signup'>
                                             <Button name="signup" onClick={handleToggle} variant='outlined'>Sign Up</Button>
                                         </Link>
-                                    </Grid>}
+                                    </Grid>
+
+                                }
                             </Grid>
 
                         </Toolbar>
