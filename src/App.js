@@ -5,12 +5,11 @@ import { ThemeProvider } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 
-import { ForgotPassword, Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
+import { ForgotPassword, Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg, Signup } from './pages'
 import { Navbar } from './components'
 import { theme } from './theme'
 import { getApis } from './redux/features/api/apiSlice'
 // @taiwoAkindele add this component to the index.js file as a named export
-import SignupPage from './pages/SignupPage'
 
 const useStyles = makeStyles({
   router_container: {
@@ -38,10 +37,9 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<LoginPage />} />
           {/* @taiwoAkindele there was a component here */}
-          {/* <Route path='/signup' element={<Signup />} /> */}
+          <Route path='/signup' element={<Signup />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           {/* @taiwoAkindele and you created another one here */}
-          <Route path='/signup' element={<SignupPage />} />
           <Route path='/api/:id' element={<SingleApi />} />
           <Route path='/api/categories' element={<Categories />} />
           <Route path='/api/categories/:category' element={<Category />} />
