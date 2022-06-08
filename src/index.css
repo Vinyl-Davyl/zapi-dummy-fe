@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Leckerli+One&display=swap');
 
+/*
+* ====================
+* Global Styles
+* ====================
+*/
 :root {
   --base: #071B85;
   --alt: #FF5C00;
@@ -69,3 +74,22 @@ a {
   0% { transform: rotate(0deg)}
   100% { transform: rotate(360deg)}
 }
+
+/*
+* ====================
+* Resizeable Div
+* ====================
+*/
+#container {
+  position: relative;
+  background-color: lightpink;
+  border: solid red 1px;
+}
+
+#draghandle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
+}
+

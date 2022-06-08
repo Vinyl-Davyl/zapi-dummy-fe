@@ -51,7 +51,8 @@ export const theme = createTheme({
             primary: '#071B85',
             secondary: '#757575',
             alternate: '#000000',
-            error: '#C00C00'
+            error: '#C00C00',
+            info: '#081F4A'
         }
     }
 })
