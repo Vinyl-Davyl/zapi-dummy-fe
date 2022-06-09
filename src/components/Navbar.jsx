@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppBar, Badge, Button, Grid, IconButton, Stack, Toolbar } from '@mui/material'
@@ -6,7 +6,7 @@ import { NotificationsOutlined, SearchOutlined } from '@mui/icons-material'
 import { makeStyles } from '@mui/styles'
 
 import { Modal, Search, UserMenu } from './index'
-import { logout, signup, login } from '../redux/features/user/userSlice'
+import { logout } from '../redux/features/user/userSlice'
 import { closeModal } from '../redux/features/modal/modalSlice'
 import { openSearchModal, closeSearchModal } from '../redux/features/search/searchSlice'
 
@@ -38,19 +38,12 @@ const Navbar = () => {
     const { isOpen } = useSelector(store => store.modal)
     const { isSearchModalOpen } = useSelector(store => store.search)
 
-    const [toggle, setToggle] = useState(true)
-
-
     const toggleSearch = () => {
         if (isSearchModalOpen) {
             dispatch(closeSearchModal())
         } else {
             dispatch(openSearchModal())
         }
-    }
-
-    const handleToggle = () => {
-        setToggle(!toggle)
     }
 
     return (
@@ -62,7 +55,7 @@ const Navbar = () => {
             }} />}
             {/* search modal */}
             {isSearchModalOpen && <Search closeModal={() => dispatch(closeSearchModal())} />}
-            {isLoggedIn && (<nav className={classes.nav}>
+            <nav className={classes.nav}>
                 <Toolbar className={classes.toolbar}>
                     <Link to='/' style={{ width: '7%' }}>
                         <img src='/LOGO.svg' alt='zapi' width='50px' />
@@ -72,47 +65,29 @@ const Navbar = () => {
                         <IconButton onClick={toggleSearch}>
                             <SearchOutlined />
                         </IconButton>
+                        {!isLoggedIn &&
+                            <Link to='/login'>
+                                <Button variant='contained'>
+                                    Login
+                                </Button>
+                            </Link>}
+                        {!isLoggedIn && <Link to='/signup'>
+                            <Button variant='outlined'>Sign Up</Button>
+                        </Link>}
 
-                        <IconButton>
-                            <Badge badgeContent={1} color='primary'>
-                                <NotificationsOutlined />
-                            </Badge>
-                        </IconButton>
-                        <UserMenu />
+                        {isLoggedIn &&
+                            (<>
+                                <IconButton>
+                                    <Badge badgeContent={1} color='primary'>
+                                        <NotificationsOutlined />
+                                    </Badge>
+                                </IconButton>
+                                <UserMenu />
+                            </>)}
                     </Stack>
                 </Toolbar>
-            </nav>)}
+            </nav>
 
-            {!isLoggedIn &&
-                (<nav>
-                    <AppBar>
-                        <Toolbar className={classes.toolbar}>
-                            <Link to='/' style={{ width: '7%' }}>
-                                <img src='/LOGO.svg' alt='zapi' width='50px' />
-                            </Link>
-
-                            <Grid container justifyContent='end' spacing={3}>
-                                {toggle ?
-                                    <Grid item>
-                                        <Link to='/login'>
-                                            <Button name="login" onClick={handleToggle} variant='contained'>
-                                                Login
-                                            </Button>
-                                        </Link>
-                                    </Grid> :
-                                    <Grid item>
-                                        <Link to='/signup'>
-                                            <Button name="signup" onClick={handleToggle} variant='outlined'>Sign Up</Button>
-                                        </Link>
-                                    </Grid>
-
-                                }
-                            </Grid>
-
-                        </Toolbar>
-                    </AppBar>
-                </nav>
-                )}
         </>
     )
 }

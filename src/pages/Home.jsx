@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     display: 'flex',
     gap: `1rem`,
     marginTop: '6rem',
+    padding: '0 1rem',
     '@media screen and (max-width: 1200px)': {
       gridTemplateColumns: '1fr'
     }
