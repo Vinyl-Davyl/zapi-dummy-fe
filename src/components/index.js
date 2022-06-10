@@ -17,4 +17,5 @@ export { default as Textbox } from './Textbox'
 export { default as TabPanel} from './TabPanel'
 export { default as UserHeader } from './UserHeader'
 export { default as UserMenu } from './UserMenu'
+export { default as NavbarAuth} from './NavbarAuth'
 
