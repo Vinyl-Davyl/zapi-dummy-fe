@@ -5,7 +5,7 @@ import { CheckCircleOutline } from '@mui/icons-material'
 import { Icon } from '@iconify/react'
 import { signup } from '../redux/features/user/userSlice'
 import { Link } from 'react-router-dom'
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { InputField } from '../components'
 import { useDispatch } from 'react-redux'
@@ -141,11 +141,11 @@ const SignupPage = () => {
                         placeholder='Password must be more than 6 characters'
                     />
 
-                    {/* This is for testing purpose, will need to create an account and get a site key if need to implement
+                    {/* This is for testing purpose, will need to create an account and get a site key if need to implement */}
                     <ReCAPTCHA
                         sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                         onChange={handleOnChange}
-                    /> */}
+                    />
                     <Button
                         disabled={!fullname || !email || !password ? true : false}
                         fullWidth
