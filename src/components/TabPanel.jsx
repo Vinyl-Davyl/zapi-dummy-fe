@@ -2,9 +2,9 @@ import React from 'react'
 import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
 
-const TabPanel = ({ children, value, index, ...other}) => {
+const TabPanel = ({ children, className, value, index, ...other}) => {
   return (
-    <div role='tabpanel' hidden={value !== index} id={`simple-tab-${index}`} {...other} >
+    <div className={className} role='tabpanel' hidden={value !== index} id={`simple-tab-${index}`} {...other} >
         {value === index && (
           <Box>{children}</Box>
         )}
