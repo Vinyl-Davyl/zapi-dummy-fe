@@ -6,7 +6,7 @@ const TabPanel = ({ children, className, value, index, ...other}) => {
   return (
     <div className={className} role='tabpanel' hidden={value !== index} id={`simple-tab-${index}`} {...other} >
         {value === index && (
-          <Box>{children}</Box>
+          <Box style={{ padding: '0 0.5rem' }}>{children}</Box>
         )}
     </div>
   )

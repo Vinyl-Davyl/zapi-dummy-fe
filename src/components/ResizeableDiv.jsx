@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const ResizeableDiv = ({ children }) => {
-  const [size, setSize] = useState({x: 400, y: 300})
+  const [size, setSize] = useState({x: 400, y: 500})
 
   const handler = (mouseDownEvent) => {
     const startSize = size
@@ -26,9 +26,7 @@ const ResizeableDiv = ({ children }) => {
   return (
     <div id='container' style={{ width: size.x, height: size.y}}>
       {children}
-      <button id='draghandle' type='button' onMouseDown={handler}>
-        &larr;
-      </button>
+      <button id='draghandle' type='button' onMouseDown={handler} />
     </div>
   )
 }

@@ -44,7 +44,7 @@ export const theme = createTheme({
                     borderBottomWidth: 'thin',
                 }
             }
-        }
+        },
     },
     palette: {
         text: {
@@ -52,7 +52,8 @@ export const theme = createTheme({
             secondary: '#757575',
             alternate: '#000000',
             error: '#C00C00',
-            info: '#081F4A'
+            info: '#081F4A',
+            success: '#23F534',
         }
     }
 })
