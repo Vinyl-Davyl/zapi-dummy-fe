@@ -41,12 +41,12 @@ const UserMenu = () => {
                 </ListItemText>
             </MenuItem>
             <Divider orientation='horizontal' />
-            <Link to='/user/001'>
+            <Link to='/user/:id'>
             <MenuItem onClick={handleClose}>
                 Profile
             </MenuItem>
             </Link>
-            <Link to='/'>
+            <Link to='/user/settings'>
             <MenuItem onClick={handleClose}>
                 Settings
             </MenuItem>

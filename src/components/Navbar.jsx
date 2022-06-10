@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Badge, Button, IconButton, Stack, Toolbar } from '@mui/material'
+import { AppBar, Badge, Button, Grid, IconButton, Stack, Toolbar } from '@mui/material'
 import { NotificationsOutlined, SearchOutlined } from '@mui/icons-material'
 import { makeStyles } from '@mui/styles'
 
@@ -46,7 +46,6 @@ const Navbar = () => {
         }
     }
 
-
     return (
         <>
             {/* modal for logout confirmatio */}
@@ -88,6 +87,7 @@ const Navbar = () => {
                     </Stack>
                 </Toolbar>
             </nav>
+
         </>
     )
 }

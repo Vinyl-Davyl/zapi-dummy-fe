@@ -6,7 +6,7 @@ import { makeStyles } from '@mui/styles'
 import { CheckCircleOutline } from '@mui/icons-material'
 import { Icon } from '@iconify/react'
 
-import { InputField } from '../components'
+import { InputField, NavbarAuth } from '../components'
 import { login } from '../redux/features/user/userSlice'
 
 const useStyles = makeStyles({
@@ -23,6 +23,7 @@ const useStyles = makeStyles({
     display: 'grid',
     placeItems: 'center',
     padding: '0 0.5rem',
+    marginTop: '6rem',
   },
   section_two: {
     width: '100%',
@@ -76,6 +77,7 @@ const LoginPage = () => {
 
   return (
     <main className={classes.main}>
+      <NavbarAuth />
       <section className={classes.section}>
         <Typography variant='h4' my={2}>Welcome back</Typography>
         <form onSubmit={handleSubmit} className={classes.form}>

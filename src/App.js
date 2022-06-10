@@ -5,18 +5,16 @@ import { ThemeProvider } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 
-import { ForgotPassword, Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg } from './pages'
+import { ForgotPassword, Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg, Signup, Settings } from './pages'
 import { Navbar } from './components'
 import { theme } from './theme'
 import { getApis } from './redux/features/api/apiSlice'
-// @taiwoAkindele add this component to the index.js file as a named export
-import SignupPage from './pages/SignupPage'
 
 const useStyles = makeStyles({
   router_container: {
     width: `100%`,
-    padding: '0 1rem',
-    marginTop: '6rem',
+    // padding: '0 1rem',
+    // marginTop: '6rem',
   }
 }) 
 
@@ -35,17 +33,22 @@ const App = () => {
       <Navbar query={query} setQuery={setQuery} />
       <div className={classes.router_container}>
         <Routes>
+          {/* General Pages */}
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<LoginPage />} />
-          {/* @taiwoAkindele there was a component here */}
-          {/* <Route path='/signup' element={<Signup />} /> */}
+          <Route path='/signup' element={<Signup />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
-          {/* @taiwoAkindele and you created another one here */}
-          <Route path='/signup' element={<SignupPage />} />
+
+          {/* API Pages */}
           <Route path='/api/:id' element={<SingleApi />} />
           <Route path='/api/categories' element={<Categories />} />
           <Route path='/api/categories/:category' element={<Category />} />
+
+          {/* User Pages */}
           <Route path='/user/:id' element={<UserProfile />} />
+          <Route path='/user/settings' element={<Settings />} />
+
+          {/* Organization Pages */}
           <Route path='/orgs/:id' />
           <Route path='/orgs/create-new' element={<CreateOrg />} />
         </Routes>

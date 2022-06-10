@@ -10,31 +10,23 @@ const array = ['Weather API', 'Entertainmet API', 'Transport API', 'Finance API'
 const arrayApis = array.length
 
 const useStyles = makeStyles({
- 
-
   mainTab:{
-    marginTop:'7rem',
+    marginTop: '1rem',
     justifyContent:'center',
-    borderBottom: '2px solid var(--base)'
+    borderBottom: '1px solid var(--base)'
   },
   tabpanel:{
     textAlign:'center',
     marginTop:'5rem'
   },
   tabs:{
-    
     '&:hover':{
-      border:'1px solid var(--base) ',
-      borderBottom:'none'
+      backgroundColor: 'rgba(0,0,0,0.1)'
     }
   },
-
-
-  
 })
 
 const UserProfile = () => {
-
   const classes = useStyles()
   const [tab, setTab] = useState(0)
 

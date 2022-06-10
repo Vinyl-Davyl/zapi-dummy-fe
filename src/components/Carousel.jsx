@@ -30,7 +30,7 @@ const CarouselComponent = ({ header, description, category }) => {
     dots: true,
     infinite: true,
     speed: 400,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
     responsive: [
       {
@@ -45,7 +45,7 @@ const CarouselComponent = ({ header, description, category }) => {
   }
 
   return (
-    <Stack direction='column' width={`95%`} my={4}>
+    <Stack direction='column' width={`100%`} my={4}>
       <Stack direction='row' alignItems='center' justifyContent='space-between' width={`95%`} mb={1}>
       <Typography variant='h5'>
         {header}
