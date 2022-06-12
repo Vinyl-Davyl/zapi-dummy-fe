@@ -13,8 +13,8 @@ import { getApis } from './redux/features/api/apiSlice'
 const useStyles = makeStyles({
   router_container: {
     width: `100%`,
-    // padding: '0 1rem',
-    // marginTop: '6rem',
+    padding: '0 1rem',
+    marginTop: '6rem',
   }
 }) 
 

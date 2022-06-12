@@ -1,81 +1,50 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { IconButton, Stack, Typography } from '@mui/material'
-import { ChevronLeft, ChevronRight } from '@mui/icons-material'
+import { Stack, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 
 import { Textbox } from './index'
 
 const array = ['Weather API', 'Entertainmet API', 'Transport API', 'Finance API', 'Food API', 'Other API']
 
 const useStyles = makeStyles({
-  leftArrow: {
-    position: 'absolute',
-    top: '50%',
-    left: '-10%',
-    transform: 'translateY(-50%)',
-    zIndex: 1,
-    color: 'var(--base)',
-  },
-    rightArrow: {
-      position: 'absolute',
-      top: '-38%',
-      right: '-90%',
-      transform: 'translateY(-50%)',
-      zIndex: 1,
-      color: 'var(--base)',
-  },
   carousel_container: {
-    width: '80%',
-    height: '350px',
+    width: '100%',
+    height: '300px',
     position: 'relative',
     margin: '0 0.5rem',
     padding: '0 1rem',
-    '@media screen and (max-width: 1100px)': {
-      width: '80%'
-    }
-  }
+  },
+  carousel: {
+    width: '100%',
+    height: '100%',
+  },
 })
-
-const NextArrow = ({ onClick }) => {
-  const classes = useStyles()
-  return (
-    <IconButton onClick={onClick} className={classes.rightArrow}>
-      <ChevronRight />
-    </IconButton>
-  )
-}
-
-const PrevArrow = ({ onClick }) => {
-  const classes = useStyles()
-  return (
-    <IconButton onClick={onClick} className={classes.leftArrow}>
-      <ChevronLeft />
-    </IconButton>
-  )
-}
 
 const CarouselComponent = ({ header, description, category }) => {
   const classes = useStyles()
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 350,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-    ],
-  }
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 2 // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 763 },
+      items: 2,
+      slidesToSlide: 1 // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 763, min: 0 },
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
+    }
+  };
 
   return (
-    <Stack direction='column' width='100%' my={4}>
+    <Stack direction='column' width='95%' my={4}>
       <Stack direction='row' alignItems='center' justifyContent='space-between' width={`95%`} mb={1}>
       <Typography variant='h5'>
         {header}
@@ -84,17 +53,17 @@ const CarouselComponent = ({ header, description, category }) => {
         View All
       </Link>
       </Stack>
-      <Typography variant='body2' color='textPrimary'>
+      <Typography variant='body2' color='textPrimary' mb={2}>
         {description}
       </Typography>
       {/* Carousel */}
       <Stack alignItems='center' justifyContent='center'>
         <Stack className={classes.carousel_container}>
-          <Slider {...settings}>
+          <Carousel responsive={responsive} arrows={true} swipeable={true} draggable={true} showDots={true} infinite={true} autoPlay={false} keyBoardControl={true} transitionDuration={500} itemClass={classes.carousel}>
             {array.map(item => (
               <Textbox key={item} name={item}/>
             ))}
-          </Slider>
+          </Carousel>
         </Stack>
       </Stack>
     </Stack>
