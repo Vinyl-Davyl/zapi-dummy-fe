@@ -2,7 +2,7 @@ import React from 'react'
 import { Avatar, Stack, Typography, Button} from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import CameraAltRoundedIcon from '@mui/icons-material/CameraAltRounded';
-// import Typed from "react-typed";
+import Typed from "react-typed";
 
 const useStyles = makeStyles({
   main: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles({
           <Avatar className={classes.image} alt='Dummy-image' src={image}  />
         <Stack direction='column' style={{ padding: '2rem' }}>
           <Typography variant='h5' style={{ fontSize: '1rem'}}>Profile</Typography>
-          {/* <Typed strings={['Update your photo ','and personal details']} typeSpeed={40} backSpeed={30} loop /> */}
+          <Typed strings={['Update your photo ','and personal details']} typeSpeed={40} backSpeed={30} loop />
         </Stack> 
           <Button variant='contained' style={{ height: '40px', marginLeft:'auto', marginTop:'2rem' }}>Edit</Button> 
       </Stack>
