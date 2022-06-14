@@ -1,18 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {} from '@mui/material'
+import { Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 import { Categories } from '../dummy-categories'
 
 const useStyles = makeStyles({
   sidebar: {
+    width: '30%',
     height: '100%',
-    marginRight: '1rem',
+    display: 'grid',
+    placeItems: 'center',
+    margin: '2rem 1rem 0 0',
     '& ul': {
+      width: '100%',
+      display: 'grid',
+      placeItems: 'center',
       listStyleType: 'none',
       '& li': {
-        margin: '1rem 0',
+        width: '100%',
+        margin: '0.5rem 0',
         textTransform: 'capitalize',
         '& a': {
           color: 'var(--base)'
@@ -33,7 +40,9 @@ const Sidebar = () => {
 
   return (
     <aside className={classes.sidebar}>
-      <h3>Categories</h3>
+      <Typography variant='h5'>
+        Categories
+      </Typography>
       <ul>
       {Categories.map(category => (
         <li key={category}>

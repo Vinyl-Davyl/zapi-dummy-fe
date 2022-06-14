@@ -14,6 +14,7 @@
   --error: #F02525;
   --success: #23F534;
   --white: #FFF;
+  --grey: #F4F4F5;
   --lato: 'Lato', sans-serif;
   --leck: 'Leckerli One', cursive;
   --transition: all 0.5s ease;
@@ -81,15 +82,53 @@ a {
 * ====================
 */
 #container {
+  min-width: 325px;
+  word-wrap: break-word;
   position: relative;
-  background-color: lightpink;
-  border: solid red 1px;
+  background: transparent;
+  flex-grow: 1;
+  border-right: 2px solid var(--grey);
+  overflow-y: scroll;
 }
 
 #draghandle {
+  height: 100%;
+  border: 1px solid var(--grey);
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
-  transform: translate(50%, 50%);
+  cursor: col-resize;
+  z-index: 2;
+}
+
+/*
+* ====================
+* Accordion
+* ====================
+*/
+.accordion_header{
+  width: 105%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  color: var(--base);
+  border: 1px solid var(--mid);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.accordion_header:hover, 
+.accordion_header.active{
+  background: var(--grey);
+}
+
+.accordion_body{
+  width: 100%;
+  color: var(--base);
+  padding: 0.5rem 1.5rem;
 }
 

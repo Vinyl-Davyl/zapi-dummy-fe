@@ -31,19 +31,19 @@ const Textbox = ({ id, name, description, status, logo }) => {
             <Avatar src={logo} sx={{ width: 32, height: 32, objectFit: 'contain' }} />
             <BookmarkBorderOutlined />
             </Stack>
-            <Typography variant='h6' color='textPrimary' marginY={2}>
+            <Typography variant='body1' color='textPrimary' marginY={2}>
               {name || 'API Name'}
             </Typography>
-            <Typography variant='subtitle1' color='textSecondary' gutterBottom>
+            <Typography variant='subtitle2' color='textSecondary' gutterBottom>
               {description || 'API Description'}
             </Typography>
             <Stack direction='row' alignItems='center' marginY={2}>
-              <Typography variant='subtitle2' color='textSecondary' marginRight={3}>
+              <Typography variant='caption' color='textSecondary' marginRight={3}>
                 Status:
               </Typography>
               {status ?
               <>
-              <Typography variant='subtitle2' color='textAlternate' marginX={2}>
+              <Typography variant='caption' color='textAlternate' marginX={2}>
                 Verified
               </Typography>
               <VerifiedOutlined htmlColor='#0CBD1E' />
