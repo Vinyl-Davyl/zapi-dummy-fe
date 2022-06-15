@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Badge, Button, IconButton, Stack, Toolbar } from '@mui/material'
 import { NotificationsOutlined, SearchOutlined } from '@mui/icons-material'
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         top: 0,
         left: 0,
         background: 'var(--white)',
-        zIndex: 3
+        zIndex: 99
     },
     toolbar: {
         height: '64px',
@@ -33,6 +33,7 @@ const useStyles = makeStyles({
 const Navbar = () => {
     const classes = useStyles()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const { isLoggedIn } = useSelector(store => store.user)
     const { isOpen } = useSelector(store => store.modal)
@@ -52,6 +53,7 @@ const Navbar = () => {
             {isOpen && <Modal message='Are you sure you want to log out?' confirm={() => {
                 dispatch(logout())
                 dispatch(closeModal())
+                navigate('/')
             }} />}
             {/* search modal */}
             {isSearchModalOpen && <Search closeModal={() => dispatch(closeSearchModal())} />}

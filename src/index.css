@@ -13,6 +13,7 @@
   --mid: #081F4A;
   --error: #F02525;
   --success: #23F534;
+  --warning: #FFA500;
   --white: #FFF;
   --grey: #F4F4F5;
   --lato: 'Lato', sans-serif;
@@ -130,5 +131,6 @@ a {
   width: 100%;
   color: var(--base);
   padding: 0.5rem 1.5rem;
+  transition: var(--transition);
 }
 
