@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { deviceDetect } from 'react-device-detect'
-import { Button, Checkbox, Divider, FormControlLabel, ListItem, Stack, Typography } from '@mui/material'
+import { Alert, Button, Checkbox, Divider, FormControlLabel, ListItem, Stack, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { CheckCircleOutline } from '@mui/icons-material'
 import { Icon } from '@iconify/react'
 
-import { InputField, NavbarAuth } from '../components'
+import { InputField, LoadingSpinner, NavbarAuth } from '../components'
 import { login } from '../redux/features/user/userSlice'
+import { useLoginService, setWithExpiry } from '../services/loginService'
 
 const useStyles = makeStyles({
   main: {
@@ -59,9 +60,11 @@ const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [location, setLocation] = useState('')
+  const [rememberMe, setRememberMe] = useState(false)
   const classes = useStyles()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { error, loading, loginUser } = useLoginService()
 
   const getLocation = async() => {
     const res = await fetch('https://geolocation-db.com/json/8dd79c70-0801-11ec-a29f-e381a788c2c0')
@@ -69,9 +72,8 @@ const LoginPage = () => {
     setLocation(data)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
-    if(!email || !password) return alert('Please fill all fields!')
     
     const device = deviceDetect()
     const time = new Date().toISOString()
@@ -79,13 +81,17 @@ const LoginPage = () => {
     const payload = {email, password, location, time , deviceName: device}
 
     try {
-      dispatch(login(payload))
+      const data = await loginUser(payload)
+      dispatch(login(data))
+      if(rememberMe){
+        setWithExpiry('user', data, data.expiration)
+      }
+      navigate(`/user/${data.user.id}`)
     } catch (error) {
       console.log(error)
     }
 
     setEmail(''); setPassword('');
-    navigate(`${/users/}`)
   }
 
   useEffect(async() => {
@@ -93,6 +99,9 @@ const LoginPage = () => {
   },[])
 
   return (
+    <>
+    {error && <Alert severity='error'>{error}</Alert>}
+    {loading && <LoadingSpinner />}
     <main className={classes.main}>
       <NavbarAuth />
       <section className={classes.section}>
@@ -100,8 +109,8 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit} className={classes.form}>
           <InputField fullWidth type='email' label='Email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='johndoe@example.com' />
           <InputField fullWidth type='password' label='Password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='*******' />
-          <FormControlLabel control={<Checkbox size='small' />} label='Keep me logged in' />
-          <Button type='submit' variant='contained'>
+          <FormControlLabel control={<Checkbox size='small' value={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} label='Keep me logged in' />
+          <Button type='submit' variant='contained' disabled={!email || !password}>
             Login
           </Button>
         </form>
@@ -158,6 +167,7 @@ const LoginPage = () => {
         </Stack>
       </section>
     </main>
+    </>
   )
 }
 

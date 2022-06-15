@@ -17,3 +17,5 @@
 - Check here for a comprehensive [Redux tutorial](https://youtu.be/bbkBuqC1rU4).
 
 - Check here for article on [dynamic routing](https://dev.to/dsckiitdev/dynamic-pages-using-react-router-2pm)
+
+- Added [service](./src/services/) for all fetch functions

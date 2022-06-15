@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-const url = ''
+const url = process.env.REACT_APP_CATEGORIES_URL
 
 const initialState = {
     apis: [],
