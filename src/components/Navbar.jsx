@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         top: 0,
         left: 0,
         background: 'var(--white)',
-        zIndex: 3
+        zIndex: 99
     },
     toolbar: {
         height: '64px',

@@ -130,5 +130,6 @@ a {
   width: 100%;
   color: var(--base);
   padding: 0.5rem 1.5rem;
+  transition: var(--transition);
 }
 

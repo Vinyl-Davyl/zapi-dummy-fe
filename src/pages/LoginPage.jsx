@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { deviceDetect } from 'react-device-detect'
 import { Button, Checkbox, Divider, FormControlLabel, ListItem, Stack, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { CheckCircleOutline } from '@mui/icons-material'
@@ -57,23 +58,39 @@ const useStyles = makeStyles({
 const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [location, setLocation] = useState('')
   const classes = useStyles()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const getLocation = async() => {
+    const res = await fetch('https://geolocation-db.com/json/8dd79c70-0801-11ec-a29f-e381a788c2c0')
+    const data = await res.json()
+    setLocation(data)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if(!email || !password) return alert('Please fill all fields!')
+    
+    const device = deviceDetect()
+    const time = new Date().toISOString()
+
+    const payload = {email, password, location, time , deviceName: device}
 
     try {
-      dispatch(login({email, password}))
-      setEmail(''); setPassword('');
-      navigate('/')
+      dispatch(login(payload))
     } catch (error) {
       console.log(error)
     }
-    
+
+    setEmail(''); setPassword('');
+    navigate(`${/users/}`)
   }
+
+  useEffect(async() => {
+    getLocation()
+  },[])
 
   return (
     <main className={classes.main}>

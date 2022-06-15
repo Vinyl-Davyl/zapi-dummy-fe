@@ -1,10 +1,20 @@
 import React, { useState } from 'react'
 import { Stack, Tab, Tabs } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 import { TabPanel } from './index'
 
+const useStyles = makeStyles({
+  snippet: {
+    width: '100%',
+    padding: '0.5rem',
+    overflowY: 'scroll',
+  }
+})
+
 const EndpointSnippets = () => {
   const [tab, setTab] = useState(0)
+  const classes = useStyles()
 
   return (
     <Stack direction='column'>
@@ -16,9 +26,9 @@ const EndpointSnippets = () => {
         </Tabs>
       </Stack>
       <Stack>
-        <TabPanel value={tab} index={0}>Code Snippets</TabPanel>
-        <TabPanel value={tab} index={1}>Example Response</TabPanel>
-        <TabPanel value={tab} index={2}>Result</TabPanel>
+        <TabPanel value={tab} index={0} className={classes.snippet}>Code Snippets</TabPanel>
+        <TabPanel value={tab} index={1} className={classes.snippet}>Example Response</TabPanel>
+        <TabPanel value={tab} index={2} className={classes.snippet}>Result</TabPanel>
       </Stack>
     </Stack>
   )
