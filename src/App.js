@@ -4,11 +4,12 @@ import { useDispatch } from 'react-redux'
 import { ThemeProvider } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
-
 import { ForgotPassword, Home, LoginPage, SingleApi, UserProfile, Categories, Category, CreateOrg, Signup, Settings } from './pages'
 import { Navbar } from './components'
 import { theme } from './theme'
 import { getApis } from './redux/features/api/apiSlice'
+import { getWithExpiry } from './services/loginService'
+import { login } from './redux/features/user/userSlice'
 
 const useStyles = makeStyles({
   router_container: {
@@ -23,8 +24,15 @@ const App = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
 
+  const getUserFromLS = () => {
+    const user = getWithExpiry('user')
+    if(!user) return null
+    dispatch(login(user))
+  }
+
   useEffect(() => {
     dispatch(getApis)
+    getUserFromLS()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
