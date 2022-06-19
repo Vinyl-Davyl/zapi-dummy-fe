@@ -1,21 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    user: {
-        name: '',
-        email: '',
-        token: '',
-        image: '',
-        isVerified: false,
-        apis: [],
-        followers: [],
-        following: [],
-        organizations: [],
-        location: {},
-        time: '',
-        deviceName: {},
-    },
-    isLoggedIn: true,
+    user: {},
+    isLoggedIn: false,
 }
 
 

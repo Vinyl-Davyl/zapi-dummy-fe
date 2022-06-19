@@ -8,7 +8,15 @@ import { Textbox, Sidebar } from '../components'
 
 const useStyles = makeStyles({
   section: {
-    width: '100%',
+    width: '80%',
+    display: 'block',
+    flexBasis: '70%',
+    padding: 0,
+    minWidth: 0,
+  },
+  sidebar: {
+    width: '20%',
+    height: '100%',
   },
   main: {
     display: 'flex',
@@ -28,8 +36,10 @@ const Category = () => {
 
   return (
     <Stack direction='row' className={classes.main}>
-      <Sidebar />
-      <Stack direction='column' className={classes.section}>
+      <div className={classes.sidebar}>
+        <Sidebar />
+      </div>
+      <div className={classes.section}>
         <Typography variant='h4'>
           Collection of the best {apiCategory} APIs.
         </Typography>
@@ -65,7 +75,7 @@ const Category = () => {
             <Textbox />
           </Grid>
         </Grid>
-      </Stack>
+      </div>
     </Stack>
   )
 }

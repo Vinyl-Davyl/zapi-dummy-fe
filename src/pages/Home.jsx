@@ -7,20 +7,25 @@ import { Carousel, LoadingSpinner, Sidebar } from '../components'
 
 const useStyles = makeStyles({
   section: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
+    width: '80%',
+    display: 'block',
+    flexBasis: '70%',
     padding: 0,
+    minWidth: 0,
+  },
+  sidebar: {
+    width: '20%',
+    height: '100%',
   },
   showcase: {
     width: '100%',
     padding: '0 0.5rem',
   },
   main: {
+    width: '100%',
     display: 'flex',
     gap: `1rem`,
     marginTop: '6rem',
-    padding: '0 1rem',
     '@media screen and (max-width: 1200px)': {
       gridTemplateColumns: '1fr'
     }
@@ -35,9 +40,11 @@ const Home = () => {
 
   return (
     <main className={classes.main}>
-      <Sidebar />
+      <div className={classes.sidebar}>
+        <Sidebar />
+      </div>
       <div className={classes.section}>
-        <Stack width='80%' mb={8}>
+        <Stack width='100%' mb={8}>
           <Typography variant='h4' gutterBottom>
             Welcome to the API hub,
           </Typography>
