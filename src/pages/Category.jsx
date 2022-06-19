@@ -7,17 +7,18 @@ import { Categories } from '../dummy-categories'
 import { Textbox, Sidebar } from '../components'
 
 const useStyles = makeStyles({
+  section: {
+    width: '100%',
+  },
   main: {
     display: 'flex',
     gap: `1rem`,
     marginTop: '6rem',
+    padding: '0 1rem',
     '@media screen and (max-width: 1200px)': {
       gridTemplateColumns: '1fr'
     }
   },
-  section: {
-    width: '95%',
-  }
 })
 
 const Category = () => {
