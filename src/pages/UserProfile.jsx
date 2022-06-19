@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Stack, Typography, Tabs, Tab, Grid } from '@mui/material'
 import { makeStyles } from '@mui/styles'
+
 import {TabPanel} from '../components'
 import { UserHeader, UserTextbox } from '../components'
 
@@ -27,6 +29,7 @@ const useStyles = makeStyles({
 const UserProfile = () => {
   const classes = useStyles()
   const [tab, setTab] = useState(0)
+  const { user } = useSelector(store => store.user)
 
   return (
     <Stack direction='column'>
@@ -34,15 +37,15 @@ const UserProfile = () => {
       <Stack>
         <Stack direction='row' spacing={20} style={{alignItems: 'center', marginTop:'2rem'}}>
           <Typography variant='h5' style={{ fontSize: '1rem'}}>Full Name</Typography>
-          <Typography variant='h6' style={{ fontSize: '1rem'}}> Dummy Name</Typography>
+          <Typography variant='h6' style={{ fontSize: '1rem'}}>{user ? user.fullName : 'Dummy Name'}</Typography>
         </Stack>
         <Stack direction='row' spacing={20} style={{alignItems: 'center', marginTop:'2rem'}}>
           <Typography variant='h5' style={{ fontSize: '1rem'}}>Username</Typography>
-          <Typography variant='h6' style={{ fontSize: '1rem'}}> Dummy Name</Typography>
+          <Typography variant='h6' style={{ fontSize: '1rem'}}>{user ? user.fullName : 'Dummy Name'}</Typography>
         </Stack>
         <Stack direction='row' spacing={20} style={{alignItems: 'center', marginTop:'2rem'}}>
           <Typography variant='h5' style={{ fontSize: '1rem'}}>Email</Typography>
-          <Typography variant='h6' style={{ fontSize: '1rem'}}> Dummyemail@example.com</Typography>
+          <Typography variant='h6' style={{ fontSize: '1rem'}}>{user ? user.email : 'someone@example.com'}</Typography>
         </Stack>
       </Stack>
       <Stack>
