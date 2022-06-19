@@ -53,7 +53,7 @@ const Navbar = () => {
             {isOpen && <Modal message='Are you sure you want to log out?' confirm={() => {
                 dispatch(logout())
                 dispatch(closeModal())
-                navigate('/')
+                navigate('/login')
             }} />}
             {/* search modal */}
             {isSearchModalOpen && <Search closeModal={() => dispatch(closeSearchModal())} />}

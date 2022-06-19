@@ -54,7 +54,8 @@ a {
 .overlay {
   width: 100%;
   height: 100%;
-  background: var(--light);
+  background: var(--white);
+  opacity: 0.5;
   backdrop-filter: blur(3px);
   display: grid;
   place-items: center;
