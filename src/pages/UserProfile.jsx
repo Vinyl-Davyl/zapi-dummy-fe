@@ -34,19 +34,25 @@ const UserProfile = () => {
   return (
     <Stack direction='column'>
       <UserHeader />
-      <Stack>
-        <Stack direction='row' spacing={20} style={{alignItems: 'center', marginTop:'2rem'}}>
-          <Typography variant='h5' style={{ fontSize: '1rem'}}>Full Name</Typography>
-          <Typography variant='h6' style={{ fontSize: '1rem'}}>{user ? user.fullName : 'Dummy Name'}</Typography>
-        </Stack>
-        <Stack direction='row' spacing={20} style={{alignItems: 'center', marginTop:'2rem'}}>
-          <Typography variant='h5' style={{ fontSize: '1rem'}}>Username</Typography>
-          <Typography variant='h6' style={{ fontSize: '1rem'}}>{user ? user.fullName : 'Dummy Name'}</Typography>
-        </Stack>
-        <Stack direction='row' spacing={20} style={{alignItems: 'center', marginTop:'2rem'}}>
-          <Typography variant='h5' style={{ fontSize: '1rem'}}>Email</Typography>
-          <Typography variant='h6' style={{ fontSize: '1rem'}}>{user ? user.email : 'someone@example.com'}</Typography>
-        </Stack>
+      <Stack direction='column' spiacing={2} my={4} >
+          <Typography variant='h6' style={{ fontSize: '1rem'}}>
+            Name: 
+            <span style={{ color: 'var(--base)', marginLeft: 10 }}>
+              {user.fullName ? user.fullName : 'Dummy Name'}
+            </span>
+          </Typography>
+          <Typography variant='h6' style={{ fontSize: '1rem'}}>
+            username: 
+            <span style={{ color: 'var(--base)', marginLeft: 10 }}>
+              {user.username ? user.username : '@username'}
+            </span>
+          </Typography>
+          <Typography variant='h6' style={{ fontSize: '1rem'}}>
+            Email: 
+            <span style={{ color: 'var(--base)', marginLeft: 10 }}>
+              {user ? user.email : 'someone@example.com'}
+            </span>
+          </Typography>
       </Stack>
       <Stack>
         <Tabs  className={classes.mainTab} value={tab} onChange={(e, newValue)=>setTab(newValue)}>
