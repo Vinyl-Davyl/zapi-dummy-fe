@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField } from '@mui/material'
+import { TextField, Typography } from '@mui/material'
 import { makeStyles, createStyles } from '@mui/styles'
 
 const useStyles = makeStyles(theme =>createStyles({
@@ -24,14 +24,22 @@ const useStyles = makeStyles(theme =>createStyles({
         color: 'var(--base)'
       }
     }
+  },
+  formControl: {
+    width: '100%',
   }
 }))
 
-const InputField = ({ type, label, name, value, onChange, onFocus, placeholder, fullWidth, required }) => {
+const InputField = ({ type, label, name, value, onChange, onFocus, placeholder, fullWidth, required, errorText }) => {
   const classes = useStyles()
 
   return (
+    <div className={classes.formControl}>
     <TextField fullWidth={fullWidth} required={required} type={type} label={label} name={name} value={value} onChange={onChange} onFocus={onFocus} placeholder={placeholder} size='small' classes={{ root: classes.root }} />
+    {errorText && (<Typography variant='caption' color=''>
+      {errorText}
+    </Typography>)}
+    </div>
   )
 }
 

@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
+    padding: '0 1rem',
     '@media screen and (max-width: 800px)': {
       flexDirection: 'column-reverse'
     }

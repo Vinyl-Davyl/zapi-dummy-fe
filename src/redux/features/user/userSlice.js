@@ -18,10 +18,6 @@ const userSlice = createSlice({
             state.user = initialState.user
             state.isLoggedIn = false
         },
-        signup: (state, { payload }) => {
-            state.user = payload
-            state.isLoggedIn = false
-        },
     }
 })
 
