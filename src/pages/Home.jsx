@@ -9,13 +9,18 @@ const useStyles = makeStyles({
   section: {
     width: '80%',
     display: 'block',
-    flexBasis: '70%',
     padding: 0,
     minWidth: 0,
+    '@media screen and (max-width: 1200px)': {
+      width: '100%'
+    }
   },
   sidebar: {
     width: '20%',
     height: '100%',
+    '@media screen and (max-width: 1200px)': {
+      width: 0
+    }
   },
   showcase: {
     width: '100%',
@@ -24,11 +29,8 @@ const useStyles = makeStyles({
   main: {
     width: '100%',
     display: 'flex',
-    gap: `1rem`,
     marginTop: '6rem',
-    '@media screen and (max-width: 1200px)': {
-      gridTemplateColumns: '1fr'
-    }
+    padding: '0 1rem'
   },
 })
 
