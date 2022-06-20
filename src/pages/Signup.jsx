@@ -5,6 +5,7 @@ import { CheckCircleOutline } from '@mui/icons-material'
 import { Icon } from '@iconify/react'
 import { signup } from '../redux/features/user/userSlice'
 import { Link } from 'react-router-dom'
+import { useSignupService } from '../services/signupService'
 
 import { InputField } from '../components'
 import { useDispatch } from 'react-redux'
@@ -64,43 +65,42 @@ const useStyles = makeStyles({
 })
 
 const SignupPage = () => {
-    const [fullname, setFullname] = useState('')
+    const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState(null)
     const classes = useStyles()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const { error, loading, signupUser, clearError } = useSignupService()
 
     const PASSWORD_REGEX = /^(?=.*[a-zA-Z0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%]).{8,20}$/
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async(e) => {
         e.preventDefault()
 
+
         if (!PASSWORD_REGEX.test(password)) {
-            setError('Password must between 8 - 20 characters and must include a capital letter, a small letter, a number and a special characters')
-            return
-        } else {
-            setError(null)
+            alert('Password must between 8 - 20 characters and must include a capital letter, a small letter, a number and a special characters')
         }
 
-        try {
-            dispatch(signup({ fullname, email, password }))
-            navigate('/login')
-        }
-        catch (err) {
-            setError(err.message)
-        }
+        const payload = { fullName, email, password }
 
+        console.log(payload)
 
-        setFullname('')
+        try{
+            const data = await signupUser(payload)
+            console.log(data)
+        }catch(err) {}
+
+        setFullName('')
         setEmail('')
         setPassword('')
     }
 
     useEffect(() => {
-        setError(null)
-    }, [fullname, email, password])
+        
+    }, [fullName, email, password])
 
     return (
         <main className={classes.main}>
@@ -112,8 +112,8 @@ const SignupPage = () => {
                         fullWidth
                         type='text'
                         label='Full Name'
-                        value={fullname}
-                        onChange={(e) => setFullname(e.target.value)}
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
                         placeholder='Enter your Full Name Here'
                     />
                     <InputField
@@ -135,7 +135,7 @@ const SignupPage = () => {
                         placeholder='Password must be more than 6 characters'
                     />
                     <Button
-                        disabled={!fullname || !email || !password ? true : false}
+                        disabled={!fullName || !email || !password ? true : false}
                         fullWidth
                         type='submit'
                         variant='contained'
