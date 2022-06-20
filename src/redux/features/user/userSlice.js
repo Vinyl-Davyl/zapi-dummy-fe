@@ -33,7 +33,7 @@ const userSlice = createSlice({
         },
         signup: (state, { payload }) => {
             state.user = payload
-            state.isLoggedIn = true
+            state.isLoggedIn = false
         },
     }
 })
