@@ -8,16 +8,26 @@ import { Textbox, Sidebar } from '../components'
 
 const useStyles = makeStyles({
   section: {
-    width: '100%',
+    width: '80%',
+    display: 'block',
+    padding: 0,
+    minWidth: 0,
+    '@media screen and (max-width: 1200px)': {
+      width: '100%'
+    }
+  },
+  sidebar: {
+    width: '20%',
+    height: '100%',
+    '@media screen and (max-width: 1200px)': {
+      width: 0
+    }
   },
   main: {
+    width: '100%',
     display: 'flex',
-    gap: `1rem`,
     marginTop: '6rem',
-    padding: '0 1rem',
-    '@media screen and (max-width: 1200px)': {
-      gridTemplateColumns: '1fr'
-    }
+    padding: '0 1rem'
   },
 })
 
@@ -28,8 +38,10 @@ const Category = () => {
 
   return (
     <Stack direction='row' className={classes.main}>
-      <Sidebar />
-      <Stack direction='column' className={classes.section}>
+      <div className={classes.sidebar}>
+        <Sidebar />
+      </div>
+      <div className={classes.section}>
         <Typography variant='h4'>
           Collection of the best {apiCategory} APIs.
         </Typography>
@@ -65,7 +77,7 @@ const Category = () => {
             <Textbox />
           </Grid>
         </Grid>
-      </Stack>
+      </div>
     </Stack>
   )
 }

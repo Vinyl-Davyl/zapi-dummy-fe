@@ -14,7 +14,6 @@ import { login } from './redux/features/user/userSlice'
 const useStyles = makeStyles({
   router_container: {
     width: `100%`,
-    padding: '0 1rem',
     marginTop: '6rem',
   }
 }) 

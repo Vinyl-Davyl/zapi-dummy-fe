@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Badge, Button, IconButton, Stack, Toolbar } from '@mui/material'
-import { NotificationsOutlined, SearchOutlined } from '@mui/icons-material'
+import { AddCircleOutline, NotificationsOutlined, SearchOutlined } from '@mui/icons-material'
 import { makeStyles } from '@mui/styles'
 
 import { Modal, Search, UserMenu } from './index'
@@ -79,17 +79,21 @@ const Navbar = () => {
 
                         {isLoggedIn &&
                             (<>
+                            <Link to='/orgs/create-new'>
                                 <IconButton>
-                                    <Badge badgeContent={1} color='primary'>
-                                        <NotificationsOutlined />
-                                    </Badge>
+                                    <AddCircleOutline />
                                 </IconButton>
-                                <UserMenu />
+                            </Link>
+                            <IconButton>
+                                <Badge badgeContent={1} color='primary'>
+                                    <NotificationsOutlined />
+                                </Badge>
+                            </IconButton>
+                            <UserMenu />
                             </>)}
                     </Stack>
                 </Toolbar>
             </nav>
-
         </>
     )
 }

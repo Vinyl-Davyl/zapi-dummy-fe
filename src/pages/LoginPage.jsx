@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
+    padding: '0 1rem',
     '@media screen and (max-width: 800px)': {
       flexDirection: 'column-reverse'
     }
@@ -82,11 +83,9 @@ const LoginPage = () => {
 
     try {
       const data = await loginUser(payload)
-      console.log(data[0])
       dispatch(login(data[0]))
 
       if(rememberMe){
-        console.log(rememberMe)
         setWithExpiry('user', data[0], 3600000)
       }
 

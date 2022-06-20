@@ -29,9 +29,7 @@ export const useLoginService = () => {
         }
     }
 
-    const clearError = () => {
-        setError(null)
-    }
+    const clearError = () => setError(null)
 
     return { clearError, error, loading, loginUser }
 }

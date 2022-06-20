@@ -37,10 +37,6 @@ body {
   overflow-x: hidden;
 }
 
-main {
-  padding: 1rem 0.5rem;
-}
-
 a {
   text-decoration: none;
   color: var(--base);
@@ -62,6 +58,7 @@ a {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 7;
 }
 
 .spinner {
