@@ -64,6 +64,11 @@ const Navbar = () => {
                     </Link>
 
                     <Stack direction='row' spacing={2} alignItems='center'>
+                        {isLoggedIn &&
+                            <Link to='/orgs/create-new'>
+                                Create Organization 
+                            </Link>
+                        }
                         <IconButton onClick={toggleSearch}>
                             <SearchOutlined />
                         </IconButton>
