@@ -32,8 +32,8 @@ const UserProfile = () => {
   const { user } = useSelector(store => store.user)
 
   return (
-    <Stack direction='column'>
-      <UserHeader />
+    <Stack direction='column' px={1}>
+      <UserHeader image={user.image} id={user.id} />
       <Stack direction='column' spiacing={2} my={4} >
           <Typography variant='h6' style={{ fontSize: '1rem'}}>
             Name: 
