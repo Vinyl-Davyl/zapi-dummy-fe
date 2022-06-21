@@ -12,6 +12,10 @@ const useStyles = makeStyles({
         borderRadius: '5px',
         padding: '0.5rem',
         margin: '1rem 0 2rem',
+    },
+    snippet: {
+        width: '100%',
+        overflowY: 'scroll',
     }
 })
 
@@ -38,46 +42,48 @@ const EndpointsParams = () => {
             Test Endpoint
             </Button>
         </Stack>
-        <Typography variant='subtitle1'>
-            Instructions
-        </Typography>
-        <Stack direction='row' alignItems='center' justifyContent='space-between' className={classes.user}>
-           <Stack direction='row' alignItems='center'>
-               <Avatar sx={{ width: 35, height: 35, objectFit: 'contain' }}/>
-               <Stack direction='column'>
-                   <Typography variant='body1'>Personal Account</Typography>
-                   <Typography variant='caption'>Dummy Name</Typography>
-               </Stack>
-           </Stack>
-           <IconButton onClick={handleMenu}>
-               <KeyboardArrowDown />
-           </IconButton>
-           <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-               <MenuItem onClick={handleClose}>
-                    <Stack direction='row' alignItems='center'>
-                        <Avatar sx={{ width: 35, height: 35, objectFit: 'contain' }}/>
-                        <Stack direction='column'>
-                            <Typography variant='body1'>Personal Account</Typography>
-                            <Typography variant='caption'>Dummy Name</Typography>
+        <Stack direction='column' alignItems='center' className={classes.snippet}>
+            <Typography variant='subtitle1'>
+                Instructions
+            </Typography>
+            <Stack direction='row' alignItems='center' justifyContent='space-between' className={classes.user}>
+            <Stack direction='row' alignItems='center'>
+                <Avatar sx={{ width: 35, height: 35, objectFit: 'contain' }}/>
+                <Stack direction='column'>
+                    <Typography variant='body1'>Personal Account</Typography>
+                    <Typography variant='caption'>Dummy Name</Typography>
+                </Stack>
+            </Stack>
+            <IconButton onClick={handleMenu}>
+                <KeyboardArrowDown />
+            </IconButton>
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                <MenuItem onClick={handleClose}>
+                        <Stack direction='row' alignItems='center'>
+                            <Avatar sx={{ width: 35, height: 35, objectFit: 'contain' }}/>
+                            <Stack direction='column'>
+                                <Typography variant='body1'>Personal Account</Typography>
+                                <Typography variant='caption'>Dummy Name</Typography>
+                            </Stack>
                         </Stack>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <Stack direction='row' alignItems='center' justifyContent='center'>
+                        <AddCircleOutline />
+                        <Typography variant='body1'>
+                            Create New Organization
+                        </Typography>
                     </Stack>
-               </MenuItem>
-               <MenuItem onClick={handleClose}>
-                   <Stack direction='row' alignItems='center' justifyContent='center'>
-                       <AddCircleOutline />
-                       <Typography variant='body1'>
-                           Create New Organization
-                       </Typography>
-                   </Stack>
-               </MenuItem>
-           </Menu>
+                </MenuItem>
+            </Menu>
+            </Stack>
+            <Accordion title='Header Parameters'>
+                Hello World
+            </Accordion>
+            <Accordion title='Required Parameters'>
+                Hello World
+            </Accordion>
         </Stack>
-        <Accordion title='Header Parameters'>
-            Hello World
-        </Accordion>
-        <Accordion title='Required Parameters'>
-            Hello World
-        </Accordion>
     </Stack>
   )
 }

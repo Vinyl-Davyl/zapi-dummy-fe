@@ -1,18 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    user: {
-        fullname: '',
-        email: '',
-        token: '',
-        image: '',
-        isVerified: false,
-        apis: [],
-        followers: [],
-        following: [],
-        organizations: []
-    },
-    isLoggedIn: true,
+    user: {},
+    isLoggedIn: false,
 }
 
 
@@ -25,11 +15,8 @@ const userSlice = createSlice({
             state.isLoggedIn = true
         },
         logout: state => {
+            state.user = initialState.user
             state.isLoggedIn = false
-        },
-        signup: (state, { payload }) => {
-            state.user = payload
-            state.isLoggedIn = true
         },
     }
 })

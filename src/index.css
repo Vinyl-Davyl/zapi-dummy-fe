@@ -13,6 +13,7 @@
   --mid: #081F4A;
   --error: #F02525;
   --success: #23F534;
+  --warning: #FFA500;
   --white: #FFF;
   --grey: #F4F4F5;
   --lato: 'Lato', sans-serif;
@@ -36,10 +37,6 @@ body {
   overflow-x: hidden;
 }
 
-main {
-  padding: 1rem 0.5rem;
-}
-
 a {
   text-decoration: none;
   color: var(--base);
@@ -53,13 +50,15 @@ a {
 .overlay {
   width: 100%;
   height: 100%;
-  background: var(--light);
+  background: var(--white);
+  opacity: 0.5;
   backdrop-filter: blur(3px);
   display: grid;
   place-items: center;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 7;
 }
 
 .spinner {
@@ -130,5 +129,6 @@ a {
   width: 100%;
   color: var(--base);
   padding: 0.5rem 1.5rem;
+  transition: var(--transition);
 }
 

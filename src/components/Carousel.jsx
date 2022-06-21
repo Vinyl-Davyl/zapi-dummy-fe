@@ -44,8 +44,8 @@ const CarouselComponent = ({ header, description, category }) => {
   };
 
   return (
-    <Stack direction='column' width='95%' my={4}>
-      <Stack direction='row' alignItems='center' justifyContent='space-between' width={`95%`} mb={1}>
+    <Stack direction='column' width='100%'>
+      <Stack direction='row' width='100%' alignItems='center' justifyContent='space-between' mb={1}>
       <Typography variant='h5'>
         {header}
       </Typography>
