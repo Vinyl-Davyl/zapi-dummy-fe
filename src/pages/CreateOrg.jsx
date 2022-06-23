@@ -23,21 +23,27 @@ const CreateOrg = () => {
   const classes = useStyles()
   const { clearError, error, loading, organizationUser } = useOrganizationService()
 
-  const [orgName, setOrgName] = useState("")
-  const [numberOfSeat, setNumberOfSeat] = useState("")
-  const [userEmail, setUserEmail] = useState("")
-  const [role, setRole] = useState("")
-  const [roleAtOrganization, setRoleAtOrganization] = useState("")
+  const [name, setname] = useState("")
+  const [number_of_seats, setNumber_of_seats] = useState("")
+  const [number_of_employees, setNumber_of_employees] = useState("")
+  // const [userEmail, setUserEmail] = useState("")
+  // const [role, setRole] = useState("")
+  // const [roleAtOrganization, setRoleAtOrganization] = useState("")
 
   const { user } = useSelector(store => store.user)
-  const payload = {orgName, numberOfSeat, userEmail, role, roleAtOrganization}
+  const payload = {
+    name, 
+    number_of_seats,
+    number_of_employees, 
+    // userEmail, role, roleAtOrganization
+  }
   const createOrganization = async(event) => {    
     event.preventDefault()
     try{
-      if(!user.profileId){
+      if(!user.profileID){
         alert('This user is not verified')
       }else{
-        const data = await organizationUser(payload, user.profileId)
+        const data = await organizationUser(payload, user.profileID)
         console.log(data)
       }
       
@@ -59,7 +65,7 @@ const CreateOrg = () => {
       <form className={classes.form} onSubmit={createOrganization}>
         <Stack direction='column' my={2}>
             <div>
-              <InputField type= 'text' label= 'Organization Name' placeholder='Org name*' value={orgName} onChange={(e) => setOrgName(e.target.value)}/>
+              <InputField type= 'text' label= 'Organization Name' placeholder='Org name*' value={name} onChange={(e) => setname(e.target.value)}/>
             </div>
         </Stack>
         <Stack direction='row' my={2}>
@@ -67,10 +73,15 @@ const CreateOrg = () => {
         </Stack>
         <Stack direction='column' my={2}>
           <div>
-            <InputField type= 'text' label= 'Organization Seat' placeholder='Number of seats' value={numberOfSeat} onChange={(e) => setNumberOfSeat(e.target.value)} />
+            <InputField type= 'number' label= 'Organization Seat' placeholder='Number of seats' value={number_of_seats} onChange={(e) => setNumber_of_seats(e.target.value)} />
           </div>
         </Stack>
         <Stack direction='column' my={2}>
+          <div>
+            <InputField type= 'number' label= 'Number of Employees' placeholder='Number of employees' value={number_of_employees} onChange={(e) => setNumber_of_employees(e.target.value)} />
+          </div>
+        </Stack>
+        {/* <Stack direction='column' my={2}>
           <Typography variant='body1'>Seats can be added or removed at any time. The first 5 are FREE.</Typography>
         </Stack>
         <Typography variant='subtitle2'>Invite teammates to your new organization</Typography>
@@ -82,9 +93,9 @@ const CreateOrg = () => {
           </Stack>
           <Stack direction='row' mx={2} width={155}>
               <Select style={{ width:'100%', height:'43px'}} value={role} onChange={(e) => setRole(e.target.value)}  fullWidth>
-                <MenuItem value=' '>Role</MenuItem>
-                <MenuItem value='Developer'>Developer</MenuItem>
-                <MenuItem value='Admin'>Admin</MenuItem>
+                <MenuItem value=''>Role</MenuItem>
+                <MenuItem value="developer">Developer</MenuItem>
+                <MenuItem value="admin">Admin</MenuItem>
               </Select>
           </Stack>
         </Stack>
@@ -92,7 +103,7 @@ const CreateOrg = () => {
           <div>
             <InputField type= 'text' label= 'Role at the organization' placeholder='Your role at the organization (Optional)' id='halfWidth' value={roleAtOrganization} onChange={(e) => setRoleAtOrganization(e.target.value)}/>
           </div>
-        </Stack>
+        </Stack> */}
           <Button style={{width:'15%', height:'45px'}} type='submit' variant='contained'>
           Confirm &amp; Continue
           </Button>
