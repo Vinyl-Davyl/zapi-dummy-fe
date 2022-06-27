@@ -3,7 +3,7 @@ import { Tab, Tabs, Stack, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 import logo from '../assets/LOGO (3).png'
-import { ApiMetrics, ApiDetails, Endpoints, EndpointSnippets, EndpointsParams, ResizeableDiv,TabPanel } from '../components'
+import { ApiMetrics, ApiDetails, Endpoints, EndpointSnippets, EndpointsParams, ResizeableDiv,TabPanel, Pricing } from '../components'
 
 const useStyles = makeStyles({
   div:{
@@ -54,7 +54,11 @@ const SingleApi = () => {
           </Stack>
         </TabPanel>
         <TabPanel value={tab} index={1}>Tutorial</TabPanel>
-        <TabPanel value={tab} index={2}>Pricing</TabPanel>
+        <TabPanel value={tab} index={2}>
+          <Stack direction='column'>
+            <Pricing />
+          </Stack>
+        </TabPanel>
       </Stack>
     </Stack>
   )

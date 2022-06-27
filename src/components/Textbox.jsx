@@ -7,7 +7,6 @@ import { makeStyles } from '@mui/styles'
 const useStyles = makeStyles({
   paperOuter: {
     width: '300px',
-    margin: '1rem 0',
     transition: 'var(--transition)',
     '&:hover': {
       transform: 'Scale(1.03)'

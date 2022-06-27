@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
+    padding: '0 1rem',
     '@media screen and (max-width: 800px)': {
       flexDirection: 'column-reverse'
     }
@@ -64,7 +65,7 @@ const LoginPage = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { error, loading, loginUser } = useLoginService()
+  const { clearError, error, loading, loginUser } = useLoginService()
 
   const getLocation = async() => {
     const res = await fetch('https://geolocation-db.com/json/8dd79c70-0801-11ec-a29f-e381a788c2c0')
@@ -78,15 +79,19 @@ const LoginPage = () => {
     const device = deviceDetect()
     const time = new Date().toISOString()
 
-    const payload = {email, password, location, time , deviceName: device}
+    const payload = {email, password, location, time , device}
 
     try {
       const data = await loginUser(payload)
-      dispatch(login(data))
+      dispatch(login(data[0]))
+
       if(rememberMe){
-        setWithExpiry('user', data, data.expiration)
+        setWithExpiry('user', data[0], 3600000)
       }
-      navigate(`/user/${data.user.id}`)
+
+      if(!data || data === undefined) return
+
+      navigate(`/user/${data[0].id}`)
     } catch (error) {
       console.log(error)
     }
@@ -100,7 +105,10 @@ const LoginPage = () => {
 
   return (
     <>
-    {error && <Alert severity='error'>{error}</Alert>}
+    {error && (
+      <Alert style={{ position: 'absolute', top: '10%', zIndex:3 }} severity='error' onClose={clearError}>
+        {error}
+      </Alert>)}
     {loading && <LoadingSpinner />}
     <main className={classes.main}>
       <NavbarAuth />

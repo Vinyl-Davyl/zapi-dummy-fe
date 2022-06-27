@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const url = process.env.REACT_APP_LOGIN_URL
+const identity_url = process.env.REACT_APP_IDENTITY_URL
 
 export const useLoginService = () => {
     const [error, setError] = useState()
@@ -10,7 +10,7 @@ export const useLoginService = () => {
         setLoading(true)
 
         try {
-            const res = await fetch(url, {
+            const res = await fetch(`${identity_url}/auth/signin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -29,7 +29,9 @@ export const useLoginService = () => {
         }
     }
 
-    return { error, loading, loginUser }
+    const clearError = () => setError(null)
+
+    return { clearError, error, loading, loginUser }
 }
 
 export const setWithExpiry = (key, value, expiration) => {

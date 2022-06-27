@@ -1,33 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Typography } from '@mui/material'
+import { List, ListItem, ListItemText, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 import { Categories } from '../dummy-categories'
 
 const useStyles = makeStyles({
   sidebar: {
-    width: '30%',
+    width: '100%',
     height: '100%',
     display: 'grid',
     placeItems: 'center',
     margin: '2rem 1rem 0 0',
-    '& ul': {
-      width: '100%',
-      display: 'grid',
-      placeItems: 'center',
-      listStyleType: 'none',
-      '& li': {
-        width: '100%',
-        margin: '0.5rem 0',
-        textTransform: 'capitalize',
-        '& a': {
-          color: 'var(--base)'
-        }
-      }
-    },
     '@media screen and (max-width: 1200px)': {
       display: 'none'
+    }
+  },
+  list: {
+    width: '100%',
+  },
+  listItem : {
+    width: '100%',
+    textTransform: 'capitalize',
+    '& a': {
+      color: 'var(--base)'
     }
   },
   link: {
@@ -43,15 +39,15 @@ const Sidebar = () => {
       <Typography variant='h5'>
         Categories
       </Typography>
-      <ul>
+      <List dense={true}>
       {Categories.map(category => (
-        <li key={category}>
+        <ListItem className={classes.listItem} key={category}>
           <Link to={`/api/categories/${category}`}>
-            {category}
+            <ListItemText primary={category} />
           </Link>
-        </li>
+        </ListItem>
       ))}
-      </ul>
+      </List>
       <Link className={classes.link} to='/api/categories'>
         View all categories
       </Link>
