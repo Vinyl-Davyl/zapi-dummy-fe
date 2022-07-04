@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Avatar, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material'
 import { KeyboardArrowDown } from '@mui/icons-material'
 import LooksOneIcon from '@mui/icons-material/LooksOne';
@@ -6,6 +6,8 @@ import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 import Looks3Icon from '@mui/icons-material/Looks3';
 import { blue } from '@mui/material/colors';
 import { makeStyles } from '@mui/styles'
+import { useDispatch, useSelector } from 'react-redux'
+
 import PricingTable from './PricingTable'
 import developers from '../assets/people.webp'
 import publicapis from '../assets/public.webp'
@@ -13,6 +15,8 @@ import apicalls from '../assets/apicalls.webp'
 import countries from '../assets/countries.webp'
 import sponsors from '../assets/sponsors.webp'
 import charts from '../assets/charts.webp'
+import { getPricing } from '../redux/features/pricing/pricingSlice'
+import LoadingSpinner from './LoadingSpinner'
 
 const useStyles = makeStyles({
     section: {
@@ -36,6 +40,8 @@ const Pricing = () => {
     const classes = useStyles()
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl)
+    const dispatch = useDispatch()
+    const {pricing, isLoading} = useSelector(store => store.pricing)
 
     const handleMenu = (e) => {
         setAnchorEl(e.currentTarget)
@@ -45,6 +51,13 @@ const Pricing = () => {
         setAnchorEl(null)
     }
 
+    useEffect(() => {
+        dispatch(getPricing())
+        console.log(pricing);
+    },[])
+
+    if(isLoading) return <LoadingSpinner/>
+    console.log(pricing);
 
   return (
     <Stack direction='column' alignItems='center' justifyContent='center'>
